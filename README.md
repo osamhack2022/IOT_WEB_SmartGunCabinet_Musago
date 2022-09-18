@@ -30,10 +30,10 @@
  - 비용이 많이 들지 않는 기술로 모든 부대에 설치하기 용이할 것입니다.  
  - 훈련 상황 외에도 병기계원 혹은 당직병들이 총기 실셈을 할때 큰 도움을 줄 것이고 정확한 데이터를 기반으로 하여 체계적인 총기관리가 이루어질 것 입니다.
 
-## ## 프로젝트 사용법 (Getting Started)
+## 프로젝트 사용법 (Getting Started)
 
 
-## ## 팀 정보 (Team Information)
+## 팀 정보 (Team Information)
 
  - 팀장(프로젝트 총 책임자): 신화랑(alceoswr@gmail.com)
  - 임배디드 개발자: 임채주(cjlim000523@gmail.com)
