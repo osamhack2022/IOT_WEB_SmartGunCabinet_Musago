@@ -1,3 +1,17 @@
+
+
+
+
+
+
+![스크린샷(2)](https://user-images.githubusercontent.com/85000764/190904516-a8c98a30-0ab6-45ae-89d0-8b2ead8666e7.png)
+
+
+
+
+
+
+
 # IOT_SmartGunCabinet_Musago(스마트 총기보관함)
 
 총을 불출하고 반납할때 자동으로 총의 개수을 계산하여 총기현황판을 최신화 해주는 제품입니다.
