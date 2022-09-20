@@ -51,7 +51,7 @@
 
  - 팀장(프로젝트 총 책임자): 신화랑(alceoswr@gmail.com)
  - 임배디드 개발자: 임채주(cjlim000523@gmail.com)
- - 임베디드 개발자: 박제형()
+ - 임베디드 개발자: 박제형(sjsanjsrh@naver.com)
 
 
 
