@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##
 #  @package flaskapp.route
-#  @file __init__.py
+#  @file route.py
 #  @author  Sinduy
 #  This module contains the route for the Flask app.
 
