@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+# flaskapp network configuration
+HOST = '127.0.0.1'
+PORT = '5000'
 # static files for flaskapp
 RESOURCE_PATH = '../../WEB_FE'
 # datatable css files
