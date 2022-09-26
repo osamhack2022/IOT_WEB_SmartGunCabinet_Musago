@@ -8,13 +8,13 @@
 
 import os
 import csv
-from config import CSV_PATH
+from config import CSV_PATH, CSV_ENCODING
 
 def readFile(filename):
-    with open(os.path.join(CSV_PATH,filename), 'r') as f:
+    with open(os.path.join(CSV_PATH,filename), 'r', encoding=CSV_ENCODING) as f:
         reader = csv.reader(f, delimiter=',', quotechar='"')
         return [reader.next() for reader in reader]
 
 def saveFile(filename, data):
-    with open(os.path.join(CSV_PATH,filename), 'w') as f:
+    with open(os.path.join(CSV_PATH,filename), 'w', encoding=CSV_ENCODING) as f:
         f.write(data)

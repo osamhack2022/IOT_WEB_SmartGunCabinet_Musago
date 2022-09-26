@@ -4,3 +4,4 @@
 RESOURCE_PATH = '../../WEB_FE'
 # datatable css files
 CSV_PATH = '../csv'
+CSV_ENCODING = 'UTF-8'
