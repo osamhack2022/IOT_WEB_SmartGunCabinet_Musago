@@ -6,8 +6,7 @@
 #  @brief This module contains the Flask app.
 
 from flask import Flask
-
-RESOURCE_PATH = '../../WEB_FE'
+from config import RESOURCE_PATH
 
 app = Flask(__name__,
     static_url_path='', 
