@@ -11,5 +11,5 @@ import json
 def to_json(data):
     return json.dumps(data)
 
-def from_json(str):
-    return json.loads(str)
+def from_json(string):
+    return json.loads(string)
