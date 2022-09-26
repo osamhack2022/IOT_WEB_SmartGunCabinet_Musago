@@ -5,12 +5,15 @@
 #  @author  Sinduy
 #  @brief This module contains the Flask app.
 
+import os
 from flask import Flask
 from config import RESOURCE_PATH
 
+rs_path = os.path.join('../',RESOURCE_PATH)
+
 app = Flask(__name__,
-    static_url_path='', 
-    static_folder=RESOURCE_PATH,
-    template_folder=RESOURCE_PATH)
+    static_url_path='',
+    static_folder=rs_path,
+    template_folder=rs_path)
 
 from flaskapp import route
