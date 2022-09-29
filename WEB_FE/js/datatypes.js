@@ -4,9 +4,18 @@
  * @brief class for data types
  */
 
+//성명	소속	계급	총기종류	총기번호	열외	비고
+//string	string	enum	string	unsigned intiger	enum	string
+const GunStatus_ParamNames = {
+    name: "성명",
+    division: "소속",
+    lank: "계급",
+    gun_model: "총기종류",
+    gun_serial: "총기번호",
+    status: "열외",
+    note: "비고"
+}
 class GunStatus {
-    //성명	소속	계급	총기종류	총기번호	열외	비고
-    //string	string	enum	string	unsigned intiger	enum	string
     /**
      * @param {string} name 성명
      * @param {string} division 소속
@@ -17,30 +26,29 @@ class GunStatus {
      * @param {string} note 비고
      */
     constructor(name, division, lank, gun_model, gun_serial, status, note) {
-        this.name.value = name;               // 성명
-        this.division.value = division;       // 소속
-        this.lank.value = lank;               // 계급
-        this.gun_model.value = gun_model;     // 총기종류
-        this.gun_serial.value = gun_serial;   // 총기번호
-        this.status.value = status;           // 열외
-        this.note.value = note;               // 비고
-        this.name.name = "성명";
-        this.division.name = "소속";
-        this.lank.name = "계급";
-        this.gun_model.name = "총기종류";
-        this.gun_serial.name = "총기번호";
-        this.status.name = "열외";
-        this.note.name = "비고";
+        this.name = name;
+        this.division = division;
+        this.lank = lank;
+        this.gun_model = gun_model;
+        this.gun_serial = gun_serial;
+        this.status = status;
+        this.note = note;
     }
     
     toArray() {
-        return [ this.name.value, this.division.value, this.lank.value, this.gun_model.value, this.gun_serial.value, this.status.value, this.note.value ]
+        return [ this.name, this.division, this.lank, this.gun_model, this.gun_serial, this.status, this.note ]
     }
 }
 
+//성명	직책	계급	지문코드
+//string	string	enum	unsigned intiger
+const AdminInfo_ParamNames = {
+    name: "성명",
+    position: "직책",
+    lank: "계급",
+    code: "지문코드"
+}
 class AdminInfo {
-    //성명	직책	계급	지문코드
-    //string	string	enum	unsigned intiger
     /**
      * @param {string} name 성명
      * @param {string} position 직책
@@ -48,17 +56,13 @@ class AdminInfo {
      * @param {number} code 지문코드
      */
     constructor(name, position,lank,code) {
-        this.name.value = name;             //  성명
-        this.position.value = position;     //  직책
-        this.lank.value = lank;             //  계급
-        this.code.value = code;             //  지문코드
-        this.name.name = "성명";
-        this.position.name = "직책";
-        this.lank.name = "계급";
-        this.code.name = "지문코드";
+        this.name = name;
+        this.position = position;
+        this.lank = lank;
+        this.code = code;
     }
 
     toArray() {
-        return [ this.name.value, this.position.value, this.lank.value, this.code.value ]
+        return [ this.name, this.position, this.lank, this.code ]
     }
 }

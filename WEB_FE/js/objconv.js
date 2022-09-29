@@ -21,20 +21,20 @@ function objectToAdminInfoArray(obj) {
 
 function gunStatusToObj(gunStatus) {
     return {
-        name: gunStatus.name.value,
-        division: gunStatus.division.value,
-        lank: gunStatus.lank.value,
-        gun_model: gunStatus.gun_model.value,
-        gun_serial: gunStatus.gun_serial.value,
-        status: gunStatus.status.value,
-        note: gunStatus.note.value
+        name: gunStatus.name,
+        division: gunStatus.division,
+        lank: gunStatus.lank,
+        gun_model: gunStatus.gun_model,
+        gun_serial: gunStatus.gun_serial,
+        status: gunStatus.status,
+        note: gunStatus.note
     }
 }
 function adminInfoToObj(adminInfo) {
     return {
-        name: adminInfo.name.value,
-        position: adminInfo.position.value,
-        lank: adminInfo.lank.value,
-        code: adminInfo.code.value
+        name: adminInfo.name,
+        position: adminInfo.position,
+        lank: adminInfo.lank,
+        code: adminInfo.code
     }
 }
