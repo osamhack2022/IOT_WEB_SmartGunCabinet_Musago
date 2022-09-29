@@ -1,3 +1,9 @@
+/**
+ * @file defines.js
+ * @author Sinduy
+ * @brief define constants and tables
+ */
+
 const Lank = {
     NONE :  0, // 
     P_1  :  1, // 이병
@@ -21,6 +27,13 @@ const Lank = {
     GO_4 : 19, // 대장
 };
 
+const Status = {
+    NONE :     0, // 
+    VACATION : 1, // 휴가
+    WORK :     2, // 근무
+    MISC :     3, // 기타
+}
+
 const Lank_table = [
     "",     // NONE
     "이병", // P_1
@@ -43,14 +56,6 @@ const Lank_table = [
     "중장", // GO_3
     "대장", // GO_4
 ]
-
-
-const Status = {
-    NONE :     0, // 
-    VACATION : 1, // 휴가
-    WORK :     2, // 근무
-    MISC :     3, // 기타
-}
 
 const Status_table = [
     "",     // NONE
