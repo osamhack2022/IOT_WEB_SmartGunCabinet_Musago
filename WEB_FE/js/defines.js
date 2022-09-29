@@ -4,6 +4,11 @@
  * @brief define constants and tables
  */
 
+/**
+ * @enum {number}
+ * @readonly
+ * @description 계급
+ */
 const Lank = {
     NONE :  0, // 
     P_1  :  1, // 이병
@@ -27,6 +32,11 @@ const Lank = {
     GO_4 : 19, // 대장
 };
 
+/**
+ * @enum {number}
+ * @readonly
+ * @description 열외
+ */
 const Status = {
     NONE :     0, // 
     VACATION : 1, // 휴가
@@ -34,6 +44,11 @@ const Status = {
     MISC :     3, // 기타
 }
 
+/**
+ * @table {string[]}
+ * @readonly
+ * @description 계급 문자열 태이블
+ */
 const Lank_table = [
     "",     // NONE
     "이병", // P_1
@@ -57,6 +72,11 @@ const Lank_table = [
     "대장", // GO_4
 ]
 
+/**
+ * @table {string[]}
+ * @readonly
+ * @description 열외 문자열 태이블
+ */
 const Status_table = [
     "",     // NONE
     "휴가", // VACATION
