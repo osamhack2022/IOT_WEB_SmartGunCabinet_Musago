@@ -6,6 +6,5 @@ PORT = '5000'
 # current path is ./WEB_BE
 # static files for flaskapp
 RESOURCE_PATH = '../WEB_FE'
-# datatable css files
-CSV_PATH = './csv'
-CSV_ENCODING = 'UTF-8'
+# datatable files
+DATAFILE_PATH = './data'
