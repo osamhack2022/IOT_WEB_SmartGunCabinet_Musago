@@ -46,7 +46,6 @@ function set_gun_sum_table_tbody(datalist) {
         <td class="gun_model">${data.gun_model}</td>
         <td class="total">${data.total}</td>
         `
-
         {
             let i = 0
             do {
