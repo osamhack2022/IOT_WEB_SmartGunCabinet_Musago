@@ -35,7 +35,7 @@ let gunStatusArray = [];
             "note": ""
         },
         {
-            "num": 3,
+            "num": 5,
             "name": "박일병",
             "division": "1소대",
             "lank": Lank.일병,

@@ -93,6 +93,16 @@ class GunSum {
         this.total ++;
         this.status[status] ++;
     }
+
+    /**
+     * @param {GunSum} gunsum 
+     */
+    addGunSum(gunsum) {
+        this.total += gunsum.total;
+        for (let i = 0; i < Status_table.length; i++) {
+            this.status[i] += gunsum.status[i];
+        }
+    }
 }
 
 // 성명	직책	계급	지문코드

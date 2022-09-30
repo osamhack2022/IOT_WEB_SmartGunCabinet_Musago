@@ -33,6 +33,29 @@ function set_gun_sum_table_thead() {
     
 }
 
+let add_row = (tbody, data) => {
+    let row = tbody.insertRow();
+    row.innerHTML = `
+    <td class="gun_model">${data.gun_model}</td>
+    <td class="total">${data.total}</td>
+    `
+    {
+        let i = 0
+        do {
+            (i < Status_table.length-1) ? i++ : i=0
+            cell = row.insertCell();
+            const n = data.status[i];
+            cell.className = Status_table[i];
+            if(n != 0) {
+                cell.innerHTML = n;
+            }else{
+                cell.className += " none";
+                cell.innerHTML = "-";
+            }
+        }while(i != 0)
+    }
+}
+
 /**
  * @brief set tbody of gun_list_table
  * @param {GunSum[]} datalist GunSum data list
@@ -40,28 +63,12 @@ function set_gun_sum_table_thead() {
 function set_gun_sum_table_tbody(datalist) {
     const tbody = gun_sum_table.querySelector("tbody")
     tbody.innerHTML = "";
+    let sumdata = new GunSum("합계");
     datalist.forEach(data => {
-        let row = tbody.insertRow();
-        row.innerHTML = `
-        <td class="gun_model">${data.gun_model}</td>
-        <td class="total">${data.total}</td>
-        `
-        {
-            let i = 0
-            do {
-                (i < Status_table.length-1) ? i++ : i=0
-                cell = row.insertCell();
-                const n = data.status[i];
-                cell.className = Status_table[i];
-                if(n != 0) {
-                    cell.innerHTML = n;
-                }else{
-                    cell.className += " none";
-                    cell.innerHTML = "-";
-                }
-            }while(i != 0)
-        }
+        add_row(tbody, data);
+        sumdata.addGunSum(data);
     });
+    add_row(tbody, sumdata);
 }
 
 /**
@@ -70,6 +77,7 @@ function set_gun_sum_table_tbody(datalist) {
  * @returns {GunSum[]} GunSum data list
 */
 function count_gun_status(datalist) {
+    /** @type {Array<GunSum>} */
     let gun_sum_list = [];
     datalist.forEach(data => {
         const gun_model = data.gun_model;
