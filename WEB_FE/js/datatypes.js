@@ -4,8 +4,9 @@
  * @brief class for data types
  */
 
-//성명	소속	계급	총기종류	총기번호	열외	비고
-//string	string	enum	string	unsigned intiger	enum	string
+// 성명	소속	계급	총기종류	총기번호	열외	비고
+// name	division	lank	gun_model	gun_serial	status	note
+// string	string	enum	string	unsigned intiger	enum	string
 const GunStatus_ParamNames = {
     name: "성명",
     division: "소속",
@@ -25,7 +26,7 @@ class GunStatus {
      * @param {Status} status 열외
      * @param {string} note 비고
      */
-    constructor(name, division, lank, gun_model, gun_serial, status, note) {
+    constructor(name, division, lank, gun_model, gun_serial, status, note = "") {
         this.name = name;
         this.division = division;
         this.lank = lank;
@@ -43,8 +44,45 @@ class GunStatus {
     }
 }
 
-//성명	직책	계급	지문코드
-//string	string	enum	unsigned intiger
+// 총기	총보유	열외	휴가	현보유
+// gun_model	total	status	vacation	current
+// string	intiger	intiger	intiger	intiger
+const GunSum_ParamNames = {
+    gun_model: "총기",
+    total: "총보유",
+    status: "열외",
+}
+class GunSum {
+    /**
+     * @param {string} gun_model 총기
+     * @param {number} total 총보유
+     * @param {number[Status]} status 열외
+    */
+    constructor(gun_model, total=0, status=new Array(Status_table.length).fill(0)) {
+        this.gun_model = gun_model
+        this.total = total
+        this.status = status
+    }
+
+    /**
+     * @returns {string[]} array of GunSum
+    */
+    toArray() {
+        return [ this.name, this.total, this.status]
+    }
+
+    /**
+     * @param {Status} status 
+     */
+    addGunStatus(status) {
+        this.total ++;
+        this.status[status] ++;
+    }
+}
+
+// 성명	직책	계급	지문코드
+// name	position	lank	code
+// string	string	enum	unsigned intiger
 const AdminInfo_ParamNames = {
     name: "성명",
     position: "직책",
