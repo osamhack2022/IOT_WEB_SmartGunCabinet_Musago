@@ -5,11 +5,14 @@
  * @requires defines.js | datatypes.js
  */
 
-// import { GunStatus, AdminInfo } from './datatypes.js';
+// import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
 // import { Lank, Status, Lank_table, Status_table } from './defines.js';
 
 const gun_list_table = document.getElementById("gun_list_table");
 
+/**
+ * @brief set thead of gun_list_table
+ */
 function set_gun_list_table_thead() {
     const thead = gun_list_table.querySelector("thead");
     thead.innerHTML = `
@@ -25,10 +28,17 @@ function set_gun_list_table_thead() {
         </tr>`;
 }
 
-function gunStatusToHTML(n,data) {
+let gun_list_tableNumber = 0;
+/**
+ * @brief GunStatus data to HTML
+ * @param {GunStatus} data GunStatus data
+ * @returns {string} HTML string
+ */
+function gunStatusToHTML(data) {
+    gun_list_tableNumber++;
     return `
         <tr>
-            <td class="number">${n}</td>
+            <td class="number">${gun_list_tableNumber}</td>
             <td class="name">${data.name}</td>
             <td class="division">${data.division}</td>
             <td class="lank">${Lank_table[data.lank]}</td>
@@ -40,11 +50,15 @@ function gunStatusToHTML(n,data) {
         `;
 }
 
+/**
+ * @brief set tbody of gun_list_table
+ * @param {GunStatus[]} datalist GunStatus data list
+*/
 function set_gun_list_table_tbody(datalist) {
     const tbody = gun_list_table.querySelector("tbody")
     tbody.innerHTML = "";
-    let n = 1;
+    gun_list_tableNumber = 1;
     datalist.forEach(data => {
-        tbody.insertAdjacentHTML("beforeend", gunStatusToHTML(n++,data));
+        tbody.insertAdjacentHTML("beforeend", gunStatusToHTML(data));
     });
 }
