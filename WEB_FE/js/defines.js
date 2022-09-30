@@ -4,6 +4,9 @@
  * @brief define constants and tables
  */
 
+/** @type {number} */
+var CABINET_SIZE = 10;
+
 /**
  * @enum {number}
  * @readonly

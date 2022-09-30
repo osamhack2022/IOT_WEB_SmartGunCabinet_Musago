@@ -17,7 +17,7 @@ function set_gun_list_table_thead() {
     const thead = gun_list_table.querySelector("thead");
     thead.innerHTML = `
         <tr>
-            <th class="number"></th>
+            <th class="num"></th>
             <th class="name">${GunStatus_ParamNames.name}</th>
             <th class="division">${GunStatus_ParamNames.division}</th>
             <th class="lank">${GunStatus_ParamNames.lank}</th>
@@ -28,16 +28,14 @@ function set_gun_list_table_thead() {
         </tr>`;
 }
 
-let gun_list_tableNumber = 0;
 /**
  * @brief GunStatus data to HTML
  * @param {GunStatus} data GunStatus data
  * @returns {string} HTML string
  */
 function gunStatusToHTML(data) {
-    gun_list_tableNumber++;
     return `
-        <td class="number">${gun_list_tableNumber}</td>
+        <td class="num">${data.num}</td>
         <td class="name">${data.name}</td>
         <td class="division">${data.division}</td>
         <td class="lank">${Lank_table[data.lank]}</td>
@@ -56,7 +54,20 @@ function set_gun_list_table_tbody(datalist) {
     const tbody = gun_list_table.querySelector("tbody")
     tbody.innerHTML = "";
     gun_list_tableNumber = 0;
-    datalist.forEach(data => {
-        tbody.insertRow().innerHTML = gunStatusToHTML(data);
-    });
+    for(let i = 0; i < CABINET_SIZE; i++) {
+        let gunStatus = datalist.find(data => data.num == i+1);
+        if(gunStatus != undefined) {
+            tbody.insertRow().innerHTML = gunStatusToHTML(gunStatus);
+        }else{
+            let row = tbody.insertRow();
+            let param_table = Object.keys(GunStatus_ParamNames);
+            row.innerHTML += `<td class="${param_table[0]} empty">${i+1}</td>`;
+            for(let j = 1; j < param_table.length; j++) {
+                row.innerHTML += `<td class="${param_table[j]} empty"></td>`;
+            }
+        }
+    }
+    // datalist.forEach(data => {
+    //     tbody.insertRow().innerHTML = gunStatusToHTML(data);
+    // });
 }

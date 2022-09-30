@@ -10,11 +10,12 @@
 // import { objectToGunStatus, objectToAdminInfo, objectToGunStatusArray, objectToAdminInfoArray, gunStatusToObj, adminInfoToObj } from './objconv.js';
 // import { set_gun_list_table_thead, set_gun_list_table_tbody } from './dom/gun_list.js';
 // import { set_gun_sum_table_thead, set_gun_sum_table_tbody } from './dom/gun_sum.js';
-
-set_gun_list_table_thead();
+/** @type {Array<>} */
+let gunStatusArray = [];
 {
     let obj = [
         {
+            "num": 1,
             "name": "김병장",
             "division": "1소대",
             "lank": Lank.병장,
@@ -24,6 +25,7 @@ set_gun_list_table_thead();
             "note": ""
         },
         {
+            "num": 2,
             "name": "이상병",
             "division": "2소대",
             "lank": Lank.상병,
@@ -33,6 +35,7 @@ set_gun_list_table_thead();
             "note": ""
         },
         {
+            "num": 3,
             "name": "박일병",
             "division": "1소대",
             "lank": Lank.일병,
@@ -42,8 +45,10 @@ set_gun_list_table_thead();
             "note": "파견"
         }
     ]
-    const gunStatusArray = objectToGunStatusArray(obj);
-    set_gun_list_table_tbody(gunStatusArray);
-    set_gun_sum_table_thead();
-    set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
+    gunStatusArray = objectToGunStatusArray(obj);
 }
+
+set_gun_list_table_thead();
+set_gun_list_table_tbody(gunStatusArray);
+set_gun_sum_table_thead();
+set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
