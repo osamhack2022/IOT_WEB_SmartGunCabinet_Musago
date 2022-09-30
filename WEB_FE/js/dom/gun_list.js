@@ -1,7 +1,7 @@
 /**
- * @file main.js
+ * @file gun_list.js
  * @author Sinduy
- * @brief program entry point
+ * @brief for #gun_list_table in gun_list.html
  * @requires defines.js | datatypes.js
  */
 
