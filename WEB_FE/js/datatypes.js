@@ -35,6 +35,9 @@ class GunStatus {
         this.note = note;
     }
     
+    /**
+     * @returns {string[]} array of GunStatus
+     */
     toArray() {
         return [ this.name, this.division, this.lank, this.gun_model, this.gun_serial, this.status, this.note ]
     }
@@ -62,6 +65,9 @@ class AdminInfo {
         this.code = code;
     }
 
+    /**
+     * @returns {string[]} array of AdminInfo
+    */
     toArray() {
         return [ this.name, this.position, this.lank, this.code ]
     }
