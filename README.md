@@ -72,11 +72,11 @@ http://127.0.0.1:5000 을 웹브라우져로 열면 서비스 이용이 가능�
 
 ### 관련 명령어  
 
-서비스 시작
+서비스 시작  
 ```$ sudo systemctl start mgc_musago```  
-서비스 종료
+서비스 종료  
 ```$ sudo systemctl stop mgc_musago```  
-서비스 재시작
+서비스 재시작  
 ```$ sudo systemctl restart mgc_musago```  
 
 ## 팀 정보 (Team Information)
