@@ -3,9 +3,7 @@
 
 
 
-
-![스크린샷(2)](https://user-images.githubusercontent.com/85000764/190904516-a8c98a30-0ab6-45ae-89d0-8b2ead8666e7.png)
-
+![스크린샷(4)](https://user-images.githubusercontent.com/85000764/193397908-8ff7d448-53b3-44d0-b9f2-1c29a0adb2e3.png)
 
 
 
