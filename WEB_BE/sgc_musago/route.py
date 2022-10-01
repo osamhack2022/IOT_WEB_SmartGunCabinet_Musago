@@ -6,7 +6,7 @@
 #  This module contains the route for the Flask app.
 
 from flask import render_template
-from mgc_musago import app
+from sgc_musago import app
 
 @app.route('/')
 def index():

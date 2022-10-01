@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from mgc_musago import app
+from sgc_musago import app
 from config import HOST, PORT
 
 if __name__ == '__main__':
