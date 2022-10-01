@@ -15,6 +15,7 @@ HERE=$(dirname $(realpath $0))
 # Set the environment variables
 WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
 WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
+SERVICE_FILE=/etc/systemd/system/sgc_musago.service
 
 # Create the directories
 mkdir -p $WEB_BE_HOME
@@ -34,7 +35,6 @@ chown -R root:root $WEB_BE_HOME
 chown -R root:root $WEB_FE_HOME
 
 # Create the service file
-SERVICE_FILE=/etc/systemd/system/sgc_musago.service
 if [ -e $SERVICE_FILE ]; then
   rm -f $SERVICE_FILE
 fi
