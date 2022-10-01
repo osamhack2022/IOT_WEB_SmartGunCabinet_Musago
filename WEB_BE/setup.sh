@@ -2,7 +2,7 @@
 # This script is used to setup the environment for the WEB_BE
 
 if [ "`id -u`" -ne 0 ]; then
-echo "please run sudo ./setup.sh"
+echo "please run sudo"
 exit
 fi
 
@@ -24,9 +24,11 @@ mkdir -p $WEB_FE_HOME
 cp -rf $HERE/../WEB_BE $WEB_BE_HOME/..
 cp -rf $HERE/../WEB_FE $WEB_FE_HOME/..
 
+# Create the service file
 SERVICE_FILE=/etc/systemd/system/sgc_musago.service
-
-touch $SERVICE_FILE
+if [ -e $SERVICE_FILE ]; then
+  rm -f $SERVICE_FILE
+fi
 echo "[Unit]" >> $SERVICE_FILE
 echo "Description= SmartGunCabinet_Musago WEB Server" >> $SERVICE_FILE
 echo "After= syslog.target network.target" >> $SERVICE_FILE
