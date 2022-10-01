@@ -6,9 +6,6 @@ echo "please run sudo"
 exit
 fi
 
-set -e
-set -v
-
 # Get the path to the script
 HERE=$(dirname $(realpath $0))
 
@@ -17,6 +14,9 @@ WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
 WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
 ROOT_HOME=/usr/local/etc/sgc_musago
 SERVICE_FILE=/etc/systemd/system/sgc_musago.service
+
+set -e
+set -v
 
 # Stop the service
 systemctl stop sgc_musago

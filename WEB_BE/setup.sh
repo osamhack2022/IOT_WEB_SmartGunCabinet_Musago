@@ -6,6 +6,14 @@ echo "please run sudo"
 exit
 fi
 
+# Get the path to the script
+HERE=$(dirname $(realpath $0))
+
+# Set the environment variables
+WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
+WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
+SERVICE_FILE=/etc/systemd/system/sgc_musago.service
+
 set -e
 set -v
 
@@ -20,14 +28,6 @@ if which pip >/dev/null; then
 else
 	sudo -y apt install python3-pip
 fi
-
-# Get the path to the script
-HERE=$(dirname $(realpath $0))
-
-# Set the environment variables
-WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
-WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
-SERVICE_FILE=/etc/systemd/system/sgc_musago.service
 
 # Create the directories
 mkdir -p $WEB_BE_HOME

@@ -6,9 +6,6 @@ echo "please run sudo"
 exit
 fi
 
-set -e
-set -v
-
 # Get the path to the script
 HERE=$(dirname $(realpath $0))
 
@@ -17,8 +14,8 @@ WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
 WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
 SERVICE_FILE=/etc/systemd/system/sgc_musago.service
 
-# pull the latest code
-git pull
+set -e
+set -v
 
 # Copy the files to the correct location
 cp -rf $HERE/../WEB_BE $WEB_BE_HOME/..
