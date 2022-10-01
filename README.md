@@ -3,8 +3,8 @@
 
 
 
+![스크린샷(7)](https://user-images.githubusercontent.com/85000764/193397925-9a59fcc6-93ce-426d-a784-fc79fc14896e.png)
 
-![스크린샷(2)](https://user-images.githubusercontent.com/85000764/190904516-a8c98a30-0ab6-45ae-89d0-8b2ead8666e7.png)
 
 
 
