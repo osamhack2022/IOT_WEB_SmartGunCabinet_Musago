@@ -65,19 +65,22 @@ http://127.0.0.1:5000 을 웹브라우져로 열면 서비스 이용이 가능�
 ```$ cd $MUSAGO_WEB_BE_HOME```  
 
 설정파일을 편집  
+```$ sudo nano environment```  
 ```$ sudo nano config.py```  
 
 서비스 제시작  
 ```$ sudo systemctl restart sgc_musago```  
 
-### 관련 명령어  
+### 업그레이드 방법
 
-서비스 시작  
-```$ sudo systemctl start sgc_musago```  
-서비스 종료  
-```$ sudo systemctl stop sgc_musago```  
-서비스 재시작  
-```$ sudo systemctl restart sgc_musago```  
+git저장소 디렉토리로 이동  
+```$ cd IOT_WEB_SmartGunCabinet_Musago```  
+
+git pull 명령어로 최신 소스를 받아옵니다.  
+```$ git pull```
+
+upgrate.sh 스크립트 실행  
+```$ sudo sh ./WEB_BE/upgrade.sh```  
 
 ## 팀 정보 (Team Information)
 
