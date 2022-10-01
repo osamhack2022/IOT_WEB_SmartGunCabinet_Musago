@@ -24,6 +24,15 @@ mkdir -p $WEB_FE_HOME
 cp -rf $HERE/../WEB_BE $WEB_BE_HOME/..
 cp -rf $HERE/../WEB_FE $WEB_FE_HOME/..
 
+# Set the permissions
+chmod -R 755 $WEB_BE_HOME
+chmod -R 755 $WEB_FE_HOME
+chmod 644 $SERVICE_FILE
+
+# Set the ownership
+chown -R root:root $WEB_BE_HOME
+chown -R root:root $WEB_FE_HOME
+
 # Create the service file
 SERVICE_FILE=/etc/systemd/system/sgc_musago.service
 if [ -e $SERVICE_FILE ]; then
@@ -44,15 +53,6 @@ echo "" >> $SERVICE_FILE
 echo "[Install]" >> $SERVICE_FILE
 echo "WantedBy= multi-user.target" >> $SERVICE_FILE
 echo "" >> $SERVICE_FILE
-
-# Set the permissions
-chmod -R 755 $WEB_BE_HOME
-chmod -R 755 $WEB_FE_HOME
-chmod 644 $SERVICE_FILE
-
-# Set the ownership
-chown -R root:root $WEB_BE_HOME
-chown -R root:root $WEB_FE_HOME
 
 # Install the python packages
 pip3 install -r $WEB_BE_HOME/requirements.txt

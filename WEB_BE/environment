@@ -1,1 +1,3 @@
+WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
+WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
 FLASK_APP=sgc_musago
