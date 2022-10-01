@@ -1,0 +1,13 @@
+[Unit]
+ Description= SmartGunCabinet_Musago WEB Server
+ After= syslog.target network.target
+
+ [Service]
+ Type=idle
+ WorkingDirectory=$WEB_BE_HOME
+ ExecStart=/usr/bin/python3 -u $WEB_BE_HOME/run.py
+ StandardOutput=$WEB_BE_HOME/out.log
+ StandardError=$WEB_BE_HOME/error.log
+
+ [Install]
+ WantedBy= multi-user.target
