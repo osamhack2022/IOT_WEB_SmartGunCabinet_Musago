@@ -16,8 +16,6 @@ HERE=$(dirname $(realpath $0))
 WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
 WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
 
-echo "export FLASK_APP=sgc_musago" >> /etc/profile
-
 # Create the directories
 mkdir -p $WEB_BE_HOME
 mkdir -p $WEB_FE_HOME
@@ -26,7 +24,9 @@ mkdir -p $WEB_FE_HOME
 cp -rf $HERE/../WEB_BE $WEB_BE_HOME/..
 cp -rf $HERE/../WEB_FE $WEB_FE_HOME/..
 
-SERVICE_FILE = /etc/systemd/system/sgc_musago.service
+SERVICE_FILE=/etc/systemd/system/sgc_musago.service
+
+touch $SERVICE_FILE
 echo "[Unit]" >> $SERVICE_FILE
 echo "Description= SmartGunCabinet_Musago WEB Server" >> $SERVICE_FILE
 echo "After= syslog.target network.target" >> $SERVICE_FILE
