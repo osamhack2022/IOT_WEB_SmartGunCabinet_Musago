@@ -57,7 +57,7 @@ echo "" >> $SERVICE_FILE
 echo "[Service]" >> $SERVICE_FILE
 echo "Type=idle" >> $SERVICE_FILE
 echo "WorkingDirectory=$WEB_BE_HOME" >> $SERVICE_FILE
-echo "ExecStart=/usr/bin/python3 -u $WEB_BE_HOME/run.py" >> $SERVICE_FILE
+echo "ExecStart=/usr/bin/python3 -um flask" >> $SERVICE_FILE
 echo "StandardOutput=$WEB_BE_HOME/out.log" >> $SERVICE_FILE
 echo "StandardError=$WEB_BE_HOME/error.log" >> $SERVICE_FILE
 echo "EnvironmentFile=$WEB_BE_HOME/environment" >> $SERVICE_FILE
