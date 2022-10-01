@@ -40,7 +40,6 @@ cp -rf $HERE/../WEB_FE $WEB_FE_HOME/..
 # Set the permissions
 chmod -R 755 $WEB_BE_HOME
 chmod -R 755 $WEB_FE_HOME
-chmod 644 $SERVICE_FILE
 
 # Set the ownership
 chown -R root:root $WEB_BE_HOME
@@ -65,6 +64,7 @@ echo "" >> $SERVICE_FILE
 echo "[Install]" >> $SERVICE_FILE
 echo "WantedBy= multi-user.target" >> $SERVICE_FILE
 echo "" >> $SERVICE_FILE
+chmod 644 $SERVICE_FILE
 
 # Install the python packages
 pip3 install -r $WEB_BE_HOME/requirements.txt
