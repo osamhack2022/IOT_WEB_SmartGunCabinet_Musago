@@ -46,6 +46,38 @@
 
 ## 프로젝트 사용법 (Getting Started)
 
+### WEB서비스 설치법  
+
+git 저장소를 복사합니다.  
+```$ git clone https://github.com/osamhack2022/IOT_WEB_SmartGunCabinet_Musago```  
+
+복사한 저장소 디렉토리로 이동  
+```$ cd IOT_WEB_SmartGunCabinet_Musago-main```  
+
+setup.sh 스크립트 실행  
+```$ sudo sh ./WEB_BE/setup.sh```  
+
+http://127.0.0.1:5000 을 웹브라우져로 열면 서비스 이용이 가능합니다.
+
+### 설정 변경법  
+
+설정 파일이 있는 디렉토리로 이동  
+```$ cd $WEB_BE_HOME```  
+
+설정파일을 편집  
+```$ sudo nano config.py```  
+
+서비스 제시작  
+```$ sudo systemctl restart mgc_musago```  
+
+### 관련 명령어  
+
+서비스 시작
+```$ sudo systemctl start mgc_musago```  
+서비스 종료
+```$ sudo systemctl stop mgc_musago```  
+서비스 재시작
+```$ sudo systemctl restart mgc_musago```  
 
 ## 팀 정보 (Team Information)
 
