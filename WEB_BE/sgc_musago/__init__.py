@@ -16,4 +16,4 @@ app = Flask(__name__,
     static_folder=rs_path,
     template_folder=rs_path)
 
-from mgc_musago import route
+from sgc_musago import route

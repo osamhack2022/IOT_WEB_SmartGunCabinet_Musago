@@ -52,7 +52,7 @@ git 저장소를 복사합니다.
 ```$ git clone https://github.com/osamhack2022/IOT_WEB_SmartGunCabinet_Musago```  
 
 복사한 저장소 디렉토리로 이동  
-```$ cd IOT_WEB_SmartGunCabinet_Musago-main```  
+```$ cd IOT_WEB_SmartGunCabinet_Musago```  
 
 setup.sh 스크립트 실행  
 ```$ sudo sh ./WEB_BE/setup.sh```  
