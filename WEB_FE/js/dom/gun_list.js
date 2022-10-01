@@ -53,11 +53,14 @@ function gunStatusToHTML(data) {
 function set_gun_list_table_tbody(datalist) {
     const tbody = gun_list_table.querySelector("tbody")
     tbody.innerHTML = "";
-    gun_list_tableNumber = 0;
     for(let i = 0; i < CABINET_SIZE; i++) {
         let gunStatus = datalist.find(data => data.num == i+1);
         if(gunStatus != undefined) {
-            tbody.insertRow().innerHTML = gunStatusToHTML(gunStatus);
+            let row = tbody.insertRow();
+            row.innerHTML = gunStatusToHTML(gunStatus);
+            row.onmousedown = function() {
+                gunStatus.onmousedown();
+            }
         }else{
             let row = tbody.insertRow();
             let param_table = Object.keys(GunStatus_ParamNames);
