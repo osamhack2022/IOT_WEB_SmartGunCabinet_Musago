@@ -1,13 +1,8 @@
-from flask import Flask, render_template
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-app = Flask(__name__,
-            static_url_path='', 
-            static_folder='../WEB_FE',
-            template_folder='../WEB_FE')
-
-@app.route('/')
-def index():
-    return render_template('index.html')
+from flaskapp import app
+from config import HOST, PORT
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=HOST, port=PORT)
