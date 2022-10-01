@@ -1,5 +1,5 @@
 #!/bin/sh
-# This script is used to setup the environment for the WEB_BE
+# This script is used to update the WEB_BE and WEB_FE files on the server
 
 if [ "`id -u`" -ne 0 ]; then
 echo "please run sudo"
@@ -8,6 +8,18 @@ fi
 
 set -e
 set -v
+
+# Check if python3 and pip are installed
+if which python3 >/dev/null; then
+  echo "python3 is installed"
+else
+	apt -y install python3
+fi
+if which pip >/dev/null; then
+  echo "pip is installed"
+else
+	sudo -y apt install python3-pip
+fi
 
 # Get the path to the script
 HERE=$(dirname $(realpath $0))
