@@ -63,6 +63,7 @@ function set_gun_sum_table_tbody(datalist) {
     const tbody = gun_sum_table.querySelector("tbody")
     const tfoot = gun_sum_table.querySelector("tfoot")
     tbody.innerHTML = "";
+    tfoot.innerHTML = "";
     let sumdata = new GunSum("합계");
     datalist.forEach(data => {
         add_row(tbody, data);
