@@ -6,7 +6,7 @@
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
-// import { body Status } from './defines.js';
+// import { body gun_list_table edit_mode_buttons Status } from './defines.js';
 // import { update_gun_list_table } from './gun_list.js';
 
 var editMode = false;
@@ -76,78 +76,109 @@ var edit_status = function (gunStatus) {
 }
 
 /**
- * @brief edit_gun_status_list_row
+ * @brief eatch_param_in_tbody
+ * @param {HTMLTableSectionElement} tbody
+ * @param {string} param
+ * @param {function(Element)} func
 */
-var edit_gun_status_list_row = function () {
-    const tbody = gun_list_table.querySelector("tbody");
-    const removeButton = document.getElementById("bt_remove");
-    const bt_edit_mode = document.getElementById("bt_edit_mode")
-    if(editMode) {
-        bt_edit_mode.innerHTML = 'save';
-    } else {
-        bt_edit_mode.innerHTML = 'edit mode';
-        selected = [];
-        removeButton.remove();
-    }
+function eatch_param_in_tbody(tbody, param, func) {
+    Object.values(tbody.rows).forEach(row => {
+        const cell = row.querySelector("."+param);
+        func(cell);
+    });
+}
 
-    if(editMode)
-    {
-        // start edit mode
-        const removeButton = document.createElement("button");
-        edit_mode_buttons.appendChild(removeButton);
-        removeButton.innerHTML = "remove";
-        removeButton.setAttribute("id", "bt_remove");
-        removeButton.addEventListener('click', (event) => {
-            selected.forEach(row => {
-                const num = row.querySelector(".num").innerHTML;
-                gunStatusArray = gunStatusArray.filter((e) => e.num != num);
-            });
-            editMode = false;
-            edit_gun_status_list_row();
-        });
-        Object.values(tbody.rows).forEach(row => {
-            for(let i = 0; i < GunStatus_Param_Array.length; i++) {
-                const param = GunStatus_Param_Array[i];
-                const cell = row.querySelector("."+param);
-                if(param != "num" && param != "status" && param != "lank") {
+/**
+ * @brief eatch_paramlist_in_row
+ * @param {HTMLTableRowElement} row
+ * @param {string[]} paramlist
+ * @param {function(Element)} func
+*/
+function eatch_paramlist_in_row(row, paramlist, func) {
+    paramlist.forEach(param => {
+        const cell = row.querySelector("."+param);
+        func(cell);
+    });
+}
+
+/**
+ * @brief edit_gun_status
+*/
+function edit_gun_status() {
+    if(!editMode) return;
+    eatch_param_in_tbody(gun_list_table.querySelector("tbody"), "num", (cell) => {
+        cell.addEventListener('click', (event) => {
+            if(!editMode) return;
+            const row = cell.parentNode;
+            const i = selected.findIndex((e) => e == row);
+            const contenteditableList = ["name", "division", "gun_model", "gun_serial", "note"];
+            if(i > -1){
+                selected.splice(i,1);
+                row.classList.remove("selected");
+                eatch_paramlist_in_row(row, contenteditableList, (cell) => {
+                    cell.classList.remove("edit");
+                    cell.removeAttribute("contenteditable");
+                });
+            }else{
+                selected.push(row);
+                row.classList.add("selected");
+                eatch_paramlist_in_row(row, contenteditableList, (cell) => {
                     cell.classList.add("edit");
                     cell.setAttribute("contenteditable", "true");
-                }else if(param == "num") {
-                    cell.addEventListener('click', (event) => {
-                        const i = selected.findIndex((e) => e == row);
-                        if(i > -1){
-                            selected.splice(i,1);
-                            row.classList.remove("selected");
-                        }else{
-                            selected.push(row);
-                            row.classList.add("selected");
-                        }
-                    });
-                }
-                cell.addEventListener('input', (event) => {
-                    console.log(event);
                 });
             }
         });
-    }else{
-        // end edit mode
-        Object.values(tbody.rows).forEach(row => {
-            for(let i = 0; i < GunStatus_Param_Array.length; i++) {
-                const param = GunStatus_Param_Array[i];
-                const cell = row.querySelector("."+param);
-                cell.classList.remove("edit");
-                row.classList.remove("selected");
-                cell.removeAttribute("contenteditable");
-            }
-        });
-
-        set_gun_list_table_tbody(gunStatusArray);
-        set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
-    }
+    });
 }
 
-document.querySelector('#bt_edit_mode').addEventListener('click', (e) => {
-    editMode = !editMode;
-    edit_gun_status_list_row();
-    document.getElementById("edit_status").remove();
+/**
+ * @brief save_gun_status
+*/
+function save_gun_status() {
+    if(editMode) return;
+}
+
+/**
+ * @brief remove_gun_status
+*/
+function remove_gun_status() {
+    if(editMode) return;
+    selected.forEach(row => {
+        const num = row.querySelector(".num").innerHTML;
+        gunStatusArray = gunStatusArray.filter((e) => e.num != num);
+    });
+}
+
+const bt_edit_mode = document.getElementById('bt_edit_mode');
+const bt_save = document.getElementById('bt_save');
+const bt_remove = document.getElementById('bt_remove');
+bt_edit_mode.addEventListener('click', (e) => {
+    // editMode = !editMode;
+    // edit_gun_status_list_row();
+    editMode = true;
+    edit_gun_status();
+    bt_save.removeAttribute('hidden');
+    bt_remove.removeAttribute('hidden');
+    bt_edit_mode.setAttribute('hidden', 'true');
+    const div_edit_status = document.getElementById('edit_status');
+    if(div_edit_status)
+        div_edit_status.remove();
+});
+bt_save.addEventListener('click', (e) => {
+    editMode = false;
+    save_gun_status();
+    bt_save.setAttribute('hidden', 'true');
+    bt_remove.setAttribute('hidden', 'true');
+    bt_edit_mode.removeAttribute('hidden');
+    set_gun_list_table_tbody(gunStatusArray);
+    set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
+});
+bt_remove.addEventListener('click', (e) => {
+    editMode = false;
+    remove_gun_status();
+    bt_save.setAttribute('hidden', 'true');
+    bt_remove.setAttribute('hidden', 'true');
+    bt_edit_mode.removeAttribute('hidden');
+    set_gun_list_table_tbody(gunStatusArray);
+    set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
 });
