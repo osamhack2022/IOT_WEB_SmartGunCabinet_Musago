@@ -7,3 +7,9 @@ td{
 #gun_list_table .edit{
     background: lightblue;
 }
+#gun_list_table .selected .edit{
+    background: yellow;
+}
+#gun_list_table .selected{
+    background: lightgreen;
+}

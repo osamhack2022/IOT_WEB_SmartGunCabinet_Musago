@@ -10,6 +10,7 @@
 // import { update_gun_list_table } from './gun_list.js';
 
 var editMode = false;
+var selected = [];
 
 /** 
  * @brief edit_status
@@ -79,9 +80,31 @@ var edit_status = function (gunStatus) {
 */
 var edit_gun_status_list_row = function () {
     const tbody = gun_list_table.querySelector("tbody");
+    const removeButton = document.getElementById("bt_remove");
+    const bt_edit_mode = document.getElementById("bt_edit_mode")
+    if(editMode) {
+        bt_edit_mode.innerHTML = 'save';
+    } else {
+        bt_edit_mode.innerHTML = 'edit mode';
+        selected = [];
+        removeButton.remove();
+    }
+
     if(editMode)
     {
         // start edit mode
+        const removeButton = document.createElement("button");
+        edit_mode_buttons.appendChild(removeButton);
+        removeButton.innerHTML = "remove";
+        removeButton.setAttribute("id", "bt_remove");
+        removeButton.addEventListener('click', (event) => {
+            selected.forEach(row => {
+                const num = row.querySelector(".num").innerHTML;
+                gunStatusArray = gunStatusArray.filter((e) => e.num != num);
+            });
+            editMode = false;
+            edit_gun_status_list_row();
+        });
         Object.values(tbody.rows).forEach(row => {
             for(let i = 0; i < GunStatus_Param_Array.length; i++) {
                 const param = GunStatus_Param_Array[i];
@@ -89,7 +112,21 @@ var edit_gun_status_list_row = function () {
                 if(param != "num" && param != "status" && param != "lank") {
                     cell.classList.add("edit");
                     cell.setAttribute("contenteditable", "true");
+                }else if(param == "num") {
+                    cell.addEventListener('click', (event) => {
+                        const i = selected.findIndex((e) => e == row);
+                        if(i > -1){
+                            selected.splice(i,1);
+                            row.classList.remove("selected");
+                        }else{
+                            selected.push(row);
+                            row.classList.add("selected");
+                        }
+                    });
                 }
+                cell.addEventListener('input', (event) => {
+                    console.log(event);
+                });
             }
         });
     }else{
@@ -99,20 +136,18 @@ var edit_gun_status_list_row = function () {
                 const param = GunStatus_Param_Array[i];
                 const cell = row.querySelector("."+param);
                 cell.classList.remove("edit");
+                row.classList.remove("selected");
                 cell.removeAttribute("contenteditable");
             }
         });
 
-        // TODO: update gunStatusArray
+        set_gun_list_table_tbody(gunStatusArray);
+        set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
     }
 }
 
 document.querySelector('#bt_edit_mode').addEventListener('click', (e) => {
     editMode = !editMode;
-    if(editMode) {
-        e.currentTarget.innerHTML = 'save';
-    } else {
-        e.currentTarget.innerHTML = 'edit mode';
-    }
     edit_gun_status_list_row();
+    document.getElementById("edit_status").remove();
 });
