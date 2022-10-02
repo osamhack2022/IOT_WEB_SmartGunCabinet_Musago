@@ -1,0 +1,9 @@
+#edit_status .selected{
+    background: lightgreen;
+}
+td{
+    border: 1px solid black;
+}
+#gun_list_table .edit{
+    background: lightblue;
+}

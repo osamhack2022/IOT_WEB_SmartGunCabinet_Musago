@@ -4,15 +4,15 @@
  * @brief class for data types
  */
 
-// 성명	소속	계급	총기종류	총기번호	열외	비고
-// name	division	lank	gun_model	gun_serial	status	note
-// string	string	enum	string	unsigned intiger	enum	string
+// #    성명	소속	계급	총기종류	총기번호	열외	비고
+// num  name	division	lank	gun_model	gun_serial	status	note
+// intiger  string	string	enum	string	unsigned intiger	enum	string
 /**
  * @type {Object.<string, string>}
  * @readonly
 */
 const GunStatus_ParamNames = {
-    num: "번호",
+    num: "#",
     name: "성명",
     division: "소속",
     lank: "계급",
@@ -21,9 +21,14 @@ const GunStatus_ParamNames = {
     status: "열외",
     note: "비고"
 }
+/**
+ * @type {Array.<string>}
+ * @readonly
+ */
+const GunStatus_Param_Array = Object.keys(GunStatus_ParamNames);
 class GunStatus {
     /**
-     * @param {number} num 번호
+     * @param {number} num #
      * @param {string} name 성명
      * @param {string} division 소속
      * @param {Lank} lank 계급
