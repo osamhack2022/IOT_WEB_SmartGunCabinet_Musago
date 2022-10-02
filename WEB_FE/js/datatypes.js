@@ -41,7 +41,6 @@ class GunStatus {
         this.gun_serial = gun_serial;
         this.status = status;
         this.note = note;
-        this.onmousedown = function() { return false; }
     }
     
     /**

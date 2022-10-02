@@ -11,7 +11,7 @@
 // import { set_gun_list_table_thead, set_gun_list_table_tbody } from './dom/gun_list.js';
 // import { set_gun_sum_table_thead, set_gun_sum_table_tbody } from './dom/gun_sum.js';
 /** @type {Array<>} */
-let gunStatusArray = [];
+var gunStatusArray = [];
 {
     let obj = [
         {

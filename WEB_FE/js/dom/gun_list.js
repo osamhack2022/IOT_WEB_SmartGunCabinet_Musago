@@ -1,14 +1,13 @@
 /**
- * @file gun_list.js
+ * @file dom/gun_list.js
  * @author Sinduy
  * @brief for #gun_list_table in gun_list.html
- * @requires defines.js | datatypes.js
+ * @requires defines.js | datatypes.js | dom/edit_status.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
-// import { Lank, Status } from './defines.js';
-
-const gun_list_table = document.getElementById("gun_list_table");
+// import { gun_list_table } from './defines.js';
+// import { edit_status } from './edit_status.js';
 
 /**
  * @brief set thead of gun_list_table
@@ -30,21 +29,26 @@ function set_gun_list_table_thead() {
 
 /**
  * @brief GunStatus data to HTML
+ * @param {HTMLTableRowElement} row Element to set
  * @param {GunStatus} data GunStatus data
- * @returns {string} HTML string
  */
-function gunStatusToHTML(data) {
-    return `
-        <td class="num">${data.num}</td>
-        <td class="name">${data.name}</td>
-        <td class="division">${data.division}</td>
-        <td class="lank">${Lank_table[data.lank]}</td>
-        <td class="gun_model">${data.gun_model}</td>
-        <td class="gun_serial">${data.gun_serial}</td>
-        <td class="status">${data.status == Status.현보유 ? "" : Status_table[data.status]}</td>
-        <td class="note">${data.note}</td>
-        `;
+function set_row_GunStatus(row, data) {
+    row.innerHTML = `
+    <td class="num">${data.num}</td>
+    <td class="name">${data.name}</td>
+    <td class="division">${data.division}</td>
+    <td class="lank">${Lank_table[data.lank]}</td>
+    <td class="gun_model">${data.gun_model}</td>
+    <td class="gun_serial">${data.gun_serial}</td>
+    <td class="status">${data.status == Status.현보유 ? "" : Status_table[data.status]}</td>
+    <td class="note">${data.note}</td>
+    `;
+    row.addEventListener('click', function (e) {
+        edit_status(data);
+    });
 }
+
+
 
 /**
  * @brief set tbody of gun_list_table
@@ -57,10 +61,7 @@ function set_gun_list_table_tbody(datalist) {
         let gunStatus = datalist.find(data => data.num == i+1);
         if(gunStatus != undefined) {
             let row = tbody.insertRow();
-            row.innerHTML = gunStatusToHTML(gunStatus);
-            row.onmousedown = function() {
-                gunStatus.onmousedown();
-            }
+            set_row_GunStatus(row, gunStatus);
         }else{
             let row = tbody.insertRow();
             let param_table = Object.keys(GunStatus_ParamNames);
@@ -70,7 +71,17 @@ function set_gun_list_table_tbody(datalist) {
             }
         }
     }
-    // datalist.forEach(data => {
-    //     tbody.insertRow().innerHTML = gunStatusToHTML(data);
-    // });
+}
+
+/**
+ * @brief update tbody of gun_list_table
+ * @param {GunStatus[]} datalist GunStatus data list
+*/
+function update_gun_list_table(datalist) {
+    const tbody = gun_list_table.querySelector("tbody");
+    const rows = tbody.querySelectorAll("tr");
+    datalist.forEach( data => {
+        const row = rows[data.num-1];
+        set_row_GunStatus(row, data);
+    });
 }
