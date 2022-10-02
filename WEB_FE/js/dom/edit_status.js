@@ -23,12 +23,16 @@ var edit_status = function (gunStatus) {
     let root = document.createElement('div');
     let popup = document.createElement('div');
     let buttons = []
+    let note = document.createElement('input');
     body.appendChild(root);
     root.appendChild(popup);
 
     root.setAttribute('class','popup_background');
     root.setAttribute('id','edit_status');
     popup.setAttribute('class','popup');
+    note.setAttribute('placeholder',GunStatus_ParamNames.note);
+
+    note.value = gunStatus.note;
     
     for(let i = 0; i < Status_table.length; i++) {
         let status = Status_table[i];
@@ -36,13 +40,13 @@ var edit_status = function (gunStatus) {
         popup.appendChild(button);
         buttons.push(button);
 
-        button.setAttribute('class','button');
-        button.setAttribute('id','edit_status_button'+i);
+        button.setAttribute('class','button _'+i);
         button.setAttribute('title','Edit status');
         button.innerHTML = status;
 
         button.addEventListener('click', function (e) {
             gunStatus.status = i;
+            gunStatus.note = note.value;
 
             // close the popup window
             root.remove();
@@ -51,4 +55,5 @@ var edit_status = function (gunStatus) {
             set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
         });
     }
+    popup.appendChild(note);
 }
