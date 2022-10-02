@@ -1,14 +1,12 @@
 /**
- * @file gun_sum.js
+ * @file dom/gun_sum.js
  * @author Sinduy
  * @brief for #gun_list_table in gun_list.html
  * @requires defines.js | datatypes.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
-// import { Status, Status_table } from './defines.js';
-
-const gun_sum_table = document.getElementById("gun_sum_table");
+// import { gun_sum_table, Status, Status_table } from './defines.js';
 
 /**
  * @brief set thead of gun_list_table

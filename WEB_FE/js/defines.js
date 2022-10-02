@@ -7,6 +7,10 @@
 /** @type {number} */
 var CABINET_SIZE = 10;
 
+const body = document.body;
+const gun_sum_table = document.getElementById("gun_sum_table");
+const gun_list_table = document.getElementById("gun_list_table");
+
 /**
  * @enum {number}
  * @readonly
