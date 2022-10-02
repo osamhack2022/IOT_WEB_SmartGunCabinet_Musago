@@ -47,6 +47,7 @@ var edit_status = function (gunStatus) {
         buttons.push(button);
 
         button.setAttribute('class','button _'+i);
+        if(gunStatus.status == i) button.classList.add('selected');
         button.innerHTML = status;
 
         button.addEventListener('click', () => {
