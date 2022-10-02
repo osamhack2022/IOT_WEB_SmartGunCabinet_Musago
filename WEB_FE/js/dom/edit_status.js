@@ -102,6 +102,8 @@ var edit_gun_status_list_row = function () {
                 cell.removeAttribute("contenteditable");
             }
         });
+
+        // TODO: update gunStatusArray
     }
 }
 
