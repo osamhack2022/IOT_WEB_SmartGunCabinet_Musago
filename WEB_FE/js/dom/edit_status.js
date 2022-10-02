@@ -105,6 +105,7 @@ function eatch_paramlist_in_row(row, paramlist, func) {
  * @brief edit_gun_status
 */
 function edit_gun_status() {
+    selected = [];
     if(!editMode) return;
     eatch_param_in_tbody(gun_list_table.querySelector("tbody"), "num", (cell) => {
         cell.addEventListener('click', (event) => {
