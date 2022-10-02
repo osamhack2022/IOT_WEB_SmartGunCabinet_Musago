@@ -24,6 +24,8 @@ var edit_status = function (gunStatus) {
     let popup = document.createElement('div');
     let buttons = []
     let note = document.createElement('input');
+    let close = document.createElement('button');
+
     body.appendChild(root);
     root.appendChild(popup);
 
@@ -31,9 +33,13 @@ var edit_status = function (gunStatus) {
     root.setAttribute('id','edit_status');
     popup.setAttribute('class','popup');
     note.setAttribute('placeholder',GunStatus_ParamNames.note);
+    close.setAttribute('class','close');
 
     note.value = gunStatus.note;
-    
+    close.innerHTML = 'X';
+    close.addEventListener('click', () => {
+        root.remove();
+    });
     for(let i = 0; i < Status_table.length; i++) {
         let status = Status_table[i];
         let button = document.createElement('button');
@@ -41,10 +47,9 @@ var edit_status = function (gunStatus) {
         buttons.push(button);
 
         button.setAttribute('class','button _'+i);
-        button.setAttribute('title','Edit status');
         button.innerHTML = status;
 
-        button.addEventListener('click', function (e) {
+        button.addEventListener('click', () => {
             gunStatus.status = i;
             gunStatus.note = note.value;
 
@@ -56,4 +61,5 @@ var edit_status = function (gunStatus) {
         });
     }
     popup.appendChild(note);
+    popup.appendChild(close);
 }
