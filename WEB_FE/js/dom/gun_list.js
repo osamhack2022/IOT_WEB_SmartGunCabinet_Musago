@@ -38,7 +38,7 @@ function set_row_GunStatus(row, data) {
         cell.innerHTML = 
         param == "status" ? 
             data.status == Status.현보유 ? 
-                "" : 
+                "-" : 
                 Status_table[data.status] :
         param == "lank" ?
             data.lank == Lank.없음 ?

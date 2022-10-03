@@ -6,7 +6,7 @@
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
-// import { body gun_list_table edit_mode_buttons Status } from './defines.js';
+// import { body gun_list_table edit_mode_buttons Status Lank} from './defines.js';
 // import { update_gun_list_table } from './gun_list.js';
 
 var editMode = false;
@@ -137,6 +137,30 @@ function edit_gun_status() {
 */
 function save_gun_status() {
     if(editMode) return;
+    selected.forEach(row => {
+        if(row.querySelector(".gun_serial").innerHTML == "") return;
+        const num = row.querySelector(".num").innerHTML;
+        const i = gunStatusArray.findIndex((e) => e.num != num);
+        const enumparamlist = ["lank", "status"];
+        const contenteditableList = GunStatus_Param_Array.filter((e) => ![...enumparamlist, "num"].includes(e));
+        
+        let obj = {num : num};
+        contenteditableList.forEach((e) => {
+            obj[e] = row.querySelector("."+e).innerHTML;
+        });
+        const lanknum = Lank[row.querySelector(".lank").innerHTML]
+        obj["lank"] = lanknum != undefined ? lanknum : 0;
+        const statusnum = Status[row.querySelector(".status").innerHTML]
+        obj["status"] = statusnum != undefined ? statusnum : 0;
+
+
+        if(gunStatusArray[i]) {
+            gunStatusArray.push(objectToGunStatus(obj));
+        }else{
+            gunStatusArray[i] = objectToGunStatus(obj);
+        }
+        
+    });
 }
 
 /**

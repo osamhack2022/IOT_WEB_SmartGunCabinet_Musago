@@ -33,7 +33,7 @@ class GunStatus {
      * @param {string} division 소속
      * @param {Lank} lank 계급
      * @param {string} gun_model 총기종류
-     * @param {number} gun_serial 총기번호
+     * @param {string} gun_serial 총기번호
      * @param {Status} status 열외
      * @param {string} note 비고
      */
