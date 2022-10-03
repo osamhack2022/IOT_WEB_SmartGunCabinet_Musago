@@ -180,9 +180,14 @@ function edit_gun_status() {
 function save_gun_status() {
     if(editMode) return;
     selected.forEach(row => {
-        if(row.querySelector(".gun_serial").innerHTML == "") return;
         const num = row.querySelector(".num").innerHTML;
         const i = gunStatusArray.findIndex((e) => e.num == num);
+        if(row.querySelector(".gun_serial").innerHTML == "") {
+            if(i >= 0) {
+                gunStatusArray.splice(i,1);
+            }
+            return
+        }
         const enumparamlist = ["lank", "status"];
         const contenteditableList = GunStatus_Param_Array.filter((e) => ![...enumparamlist, "num"].includes(e));
         
