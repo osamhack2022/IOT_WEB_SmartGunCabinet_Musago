@@ -75,6 +75,42 @@ var edit_status = function (gunStatus) {
     popup.appendChild(close);
 }
 
+function edit_lank(e){
+    if(!editMode) return;
+    if(document.getElementById("edit_lank") != null) {
+        document.getElementById("edit_lank").remove();
+    }
+
+    // popup status selections
+    let root = document.createElement('div');
+    let popup = document.createElement('div');
+    let buttons = []
+
+    body.appendChild(root);
+    root.appendChild(popup);
+
+    root.setAttribute('class','popup_background');
+    root.setAttribute('id','edit_lank');
+    popup.setAttribute('class','popup');
+    for(let i = 0; i < Lank_table.length; i++) {
+        let lank = Lank_table[i];
+        let button = document.createElement('button');
+        popup.appendChild(button);
+        buttons.push(button);
+
+        button.setAttribute('class','button _'+i);
+        button.innerHTML = lank;
+        if(e.target.innerHTML == lank) button.classList.add('selected');
+
+        button.addEventListener('click', () => {
+            selected.forEach(row => {
+                row.querySelector(".lank").innerHTML = lank;
+            });
+            root.remove();
+        });
+    }
+}
+
 /**
  * @brief eatch_param_in_tbody
  * @param {HTMLTableSectionElement} tbody
@@ -120,12 +156,18 @@ function edit_gun_status() {
                     cell.classList.remove("edit");
                     cell.removeAttribute("contenteditable");
                 });
+                eatch_paramlist_in_row(row, ["lank"], (cell) => {
+                    cell.removeEventListener('click', edit_lank);
+                });
             }else{
                 selected.push(row);
                 row.classList.add("selected");
                 eatch_paramlist_in_row(row, contenteditableList, (cell) => {
                     cell.classList.add("edit");
                     cell.setAttribute("contenteditable", "true");
+                });
+                eatch_paramlist_in_row(row, ["lank"], (cell) => {
+                    cell.addEventListener('click', edit_lank);
                 });
             }
         });
@@ -140,7 +182,7 @@ function save_gun_status() {
     selected.forEach(row => {
         if(row.querySelector(".gun_serial").innerHTML == "") return;
         const num = row.querySelector(".num").innerHTML;
-        const i = gunStatusArray.findIndex((e) => e.num != num);
+        const i = gunStatusArray.findIndex((e) => e.num == num);
         const enumparamlist = ["lank", "status"];
         const contenteditableList = GunStatus_Param_Array.filter((e) => ![...enumparamlist, "num"].includes(e));
         
@@ -154,7 +196,7 @@ function save_gun_status() {
         obj["status"] = statusnum != undefined ? statusnum : 0;
 
 
-        if(gunStatusArray[i] == undefined) {
+        if(i < 0) {
             gunStatusArray.push(objectToGunStatus(obj));
         }else{
             gunStatusArray[i] = objectToGunStatus(obj);

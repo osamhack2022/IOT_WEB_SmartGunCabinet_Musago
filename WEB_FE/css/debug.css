@@ -1,4 +1,4 @@
-#edit_status .selected{
+button.selected{
     background: lightgreen;
 }
 td{
