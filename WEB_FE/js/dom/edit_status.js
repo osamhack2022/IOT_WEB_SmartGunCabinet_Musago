@@ -154,7 +154,7 @@ function save_gun_status() {
         obj["status"] = statusnum != undefined ? statusnum : 0;
 
 
-        if(gunStatusArray[i]) {
+        if(gunStatusArray[i] == undefined) {
             gunStatusArray.push(objectToGunStatus(obj));
         }else{
             gunStatusArray[i] = objectToGunStatus(obj);
