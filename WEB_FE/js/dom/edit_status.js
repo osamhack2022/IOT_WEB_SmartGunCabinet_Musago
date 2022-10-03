@@ -170,6 +170,8 @@ function edit_gun_status() {
                     cell.addEventListener('click', edit_lank);
                 });
             }
+            const div_edit_lank = document.getElementById("edit_lank");
+            if(edit_lank != undefined) div_edit_lank.remove();
         });
     });
 }
