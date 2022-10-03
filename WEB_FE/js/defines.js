@@ -18,7 +18,7 @@ const edit_mode_buttons = document.getElementById("edit_mode_buttons");
  * @description 계급
  */
 const Lank = {
-    "-" :  0,
+    "없음" :  0,
     "이병" :  1,
     "일병" :  2,
     "상병" :  3,

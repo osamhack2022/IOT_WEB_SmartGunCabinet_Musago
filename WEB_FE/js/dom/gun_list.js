@@ -42,7 +42,7 @@ function set_row_GunStatus(row, data) {
                 Status_table[data.status] :
         param == "lank" ?
             data.lank == Lank.없음 ?
-                "" :
+                "-" :
                 Lank_table[data.lank] :
         data[param];
         
