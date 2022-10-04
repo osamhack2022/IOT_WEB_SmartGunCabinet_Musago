@@ -112,9 +112,7 @@ function edit_lank(e){
         if(e.target.innerHTML == lank) button.classList.add('selected');
 
         button.addEventListener('click', () => {
-            selected.forEach(row => {
-                row.querySelector(".lank").innerHTML = lank;
-            });
+            e.target.innerHTML = lank;
             root.remove();
         });
     }
