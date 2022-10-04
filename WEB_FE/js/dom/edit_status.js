@@ -2,12 +2,14 @@
  * @file dom/edit_state.js
  * @author Sinduy
  * @brief for status editer
- * @requires defines.js | datatypes.js | gun_list.js
+ * @requires defines.js | datatypes.js | gun_list.js | gunsum.js | dataio.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
 // import { body gun_list_table edit_mode_buttons Status Lank} from './defines.js';
 // import { update_gun_list_table } from './gun_list.js';
+// import { count_gun_status set_gun_sum_table_tbody } from './gunsum.js';
+// import { save_localstorage } from './dataio.js';
 
 var editMode = false;
 var selected = [];
@@ -240,6 +242,7 @@ bt_edit_mode.addEventListener('click', (e) => {
 bt_save.addEventListener('click', (e) => {
     editMode = false;
     save_gun_status();
+    save_localstorage("gunStatusArray", gunStatusArray);
     bt_save.setAttribute('hidden', 'true');
     bt_remove.setAttribute('hidden', 'true');
     bt_edit_mode.removeAttribute('hidden');
@@ -249,6 +252,7 @@ bt_save.addEventListener('click', (e) => {
 bt_remove.addEventListener('click', (e) => {
     editMode = false;
     remove_gun_status();
+    save_localstorage("gunStatusArray", gunStatusArray);
     bt_save.setAttribute('hidden', 'true');
     bt_remove.setAttribute('hidden', 'true');
     bt_edit_mode.removeAttribute('hidden');
