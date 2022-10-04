@@ -147,7 +147,7 @@ function eatch_paramlist_in_row(row, paramlist, func) {
 }
 
 /**
- * @brief edit_gun_status
+ * @brief on edit mode!!!
 */
 function edit_gun_status() {
     selected = [];
@@ -221,7 +221,7 @@ function save_gun_status() {
 }
 
 /**
- * @brief remove_gun_status
+ * @brief remove gun_status row in gun_list_table tbody
 */
 function remove_gun_status() {
     if(editMode) return;
@@ -231,6 +231,7 @@ function remove_gun_status() {
     });
 }
 
+// button events
 const bt_edit_mode = document.getElementById('bt_edit_mode');
 const bt_save = document.getElementById('bt_save');
 const bt_remove = document.getElementById('bt_remove');
