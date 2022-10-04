@@ -19,7 +19,7 @@ var editMode = false;
 var selected = [];
 
 /** 
- * @brief edit_status
+ * @brief 열외 수정 모드로 전환
  * @param {GunStatus} gunStatus GunStatus data
 */
 var edit_status = function (gunStatus) {
@@ -72,6 +72,9 @@ var edit_status = function (gunStatus) {
             // close the popup window
             root.remove();
             update_gun_list_table([gunStatus]);
+            
+            save_gun_status();
+            save_localstorage("gunStatusArray", gunStatusArray);
 
             set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
         });
@@ -185,7 +188,7 @@ function edit_gun_status() {
 }
 
 /**
- * @brief save_gun_status
+ * @brief save gun_status at gunStatusArray
 */
 function save_gun_status() {
     if(editMode) return;
