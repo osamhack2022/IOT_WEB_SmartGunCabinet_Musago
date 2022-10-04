@@ -170,8 +170,10 @@ function edit_gun_status() {
                     cell.addEventListener('click', edit_lank);
                 });
             }
+
+
             const div_edit_lank = document.getElementById("edit_lank");
-            if(edit_lank != undefined) div_edit_lank.remove();
+            if(div_edit_lank != undefined) div_edit_lank.remove();
         });
     });
 }
@@ -197,11 +199,8 @@ function save_gun_status() {
         contenteditableList.forEach((e) => {
             obj[e] = row.querySelector("."+e).innerHTML;
         });
-        const lanknum = Lank[row.querySelector(".lank").innerHTML]
-        obj["lank"] = lanknum != undefined ? lanknum : 0;
-        const statusnum = Status[row.querySelector(".status").innerHTML]
-        obj["status"] = statusnum != undefined ? statusnum : 0;
-
+        obj["lank"] = Lank[row.querySelector(".lank").innerHTML] ?? 0;
+        obj["status"] = Status[row.querySelector(".status").innerHTML] ?? 0;
 
         if(i < 0) {
             gunStatusArray.push(objectToGunStatus(obj));
