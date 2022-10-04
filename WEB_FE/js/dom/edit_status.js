@@ -2,7 +2,11 @@
  * @file dom/edit_state.js
  * @author Sinduy
  * @brief for status editer
- * @requires defines.js | datatypes.js | gun_list.js | gunsum.js | dataio.js
+ * @requires defines.js
+ * @requires datatypes.js
+ * @requires gun_list.js
+ * @requires gunsum.js
+ * @requires dataio.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';

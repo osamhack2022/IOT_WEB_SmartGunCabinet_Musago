@@ -2,7 +2,11 @@
  * @file main.js
  * @author Sinduy
  * @brief program entry point
- * @requires defines.js | datatypes.js | objconv.js | dom/gun_list.js | dom/gun_sum.js
+ * @requires defines.js
+ * @requires datatypes.js
+ * @requires objconv.js
+ * @requires dom/gun_list.js
+ * @requires dom/gun_sum.js
  */
 
 // import { GunStatus, AdminInfo } from './datatypes.js';
