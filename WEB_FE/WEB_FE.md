@@ -9,8 +9,10 @@ Frontend code folderFE
     - [x] edit mode에서 remove 구현  
     - [x] edit mode에서 save 구현  
     - [x] edit mode에서 dropdown 구현  
+    - [x] 총기 추가 완성  
+    - [ ] edit mode copy 구현
     - [ ] 유효성 검사 구현  
-    - [ ] 총기 추가 완성  
-- [ ] ~~BE로 json넘겨주기~~ -> localstorage로 구현  
-~~- [ ] Json to CSV~~  
-~~- [ ] CSV to Json~~  
+- [x] localstorage 구현  
+- [ ] 총기함 크기 변경 구현
+- [ ] CSV Output 만들기
+

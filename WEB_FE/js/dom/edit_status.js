@@ -2,18 +2,24 @@
  * @file dom/edit_state.js
  * @author Sinduy
  * @brief for status editer
- * @requires defines.js | datatypes.js | gun_list.js
+ * @requires defines.js
+ * @requires datatypes.js
+ * @requires gun_list.js
+ * @requires gunsum.js
+ * @requires dataio.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
 // import { body gun_list_table edit_mode_buttons Status Lank} from './defines.js';
 // import { update_gun_list_table } from './gun_list.js';
+// import { count_gun_status set_gun_sum_table_tbody } from './gunsum.js';
+// import { save_localstorage } from './dataio.js';
 
 var editMode = false;
 var selected = [];
 
 /** 
- * @brief edit_status
+ * @brief 열외 수정 모드로 전환
  * @param {GunStatus} gunStatus GunStatus data
 */
 var edit_status = function (gunStatus) {
@@ -66,6 +72,9 @@ var edit_status = function (gunStatus) {
             // close the popup window
             root.remove();
             update_gun_list_table([gunStatus]);
+            
+            save_gun_status();
+            save_localstorage("gunStatusArray", gunStatusArray);
 
             set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
         });
@@ -103,9 +112,7 @@ function edit_lank(e){
         if(e.target.innerHTML == lank) button.classList.add('selected');
 
         button.addEventListener('click', () => {
-            selected.forEach(row => {
-                row.querySelector(".lank").innerHTML = lank;
-            });
+            e.target.innerHTML = lank;
             root.remove();
         });
     }
@@ -138,7 +145,7 @@ function eatch_paramlist_in_row(row, paramlist, func) {
 }
 
 /**
- * @brief edit_gun_status
+ * @brief on edit mode!!!
 */
 function edit_gun_status() {
     selected = [];
@@ -170,14 +177,16 @@ function edit_gun_status() {
                     cell.addEventListener('click', edit_lank);
                 });
             }
+
+
             const div_edit_lank = document.getElementById("edit_lank");
-            if(edit_lank != undefined) div_edit_lank.remove();
+            if(div_edit_lank != undefined) div_edit_lank.remove();
         });
     });
 }
 
 /**
- * @brief save_gun_status
+ * @brief save gun_status at gunStatusArray
 */
 function save_gun_status() {
     if(editMode) return;
@@ -197,11 +206,8 @@ function save_gun_status() {
         contenteditableList.forEach((e) => {
             obj[e] = row.querySelector("."+e).innerHTML;
         });
-        const lanknum = Lank[row.querySelector(".lank").innerHTML]
-        obj["lank"] = lanknum != undefined ? lanknum : 0;
-        const statusnum = Status[row.querySelector(".status").innerHTML]
-        obj["status"] = statusnum != undefined ? statusnum : 0;
-
+        obj["lank"] = Lank[row.querySelector(".lank").innerHTML] ?? 0;
+        obj["status"] = Status[row.querySelector(".status").innerHTML] ?? 0;
 
         if(i < 0) {
             gunStatusArray.push(objectToGunStatus(obj));
@@ -213,7 +219,7 @@ function save_gun_status() {
 }
 
 /**
- * @brief remove_gun_status
+ * @brief remove gun_status row in gun_list_table tbody
 */
 function remove_gun_status() {
     if(editMode) return;
@@ -223,6 +229,7 @@ function remove_gun_status() {
     });
 }
 
+// button events
 const bt_edit_mode = document.getElementById('bt_edit_mode');
 const bt_save = document.getElementById('bt_save');
 const bt_remove = document.getElementById('bt_remove');
@@ -241,6 +248,7 @@ bt_edit_mode.addEventListener('click', (e) => {
 bt_save.addEventListener('click', (e) => {
     editMode = false;
     save_gun_status();
+    save_localstorage("gunStatusArray", gunStatusArray);
     bt_save.setAttribute('hidden', 'true');
     bt_remove.setAttribute('hidden', 'true');
     bt_edit_mode.removeAttribute('hidden');
@@ -250,6 +258,7 @@ bt_save.addEventListener('click', (e) => {
 bt_remove.addEventListener('click', (e) => {
     editMode = false;
     remove_gun_status();
+    save_localstorage("gunStatusArray", gunStatusArray);
     bt_save.setAttribute('hidden', 'true');
     bt_remove.setAttribute('hidden', 'true');
     bt_edit_mode.removeAttribute('hidden');

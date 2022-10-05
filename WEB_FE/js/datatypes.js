@@ -56,7 +56,7 @@ class GunStatus {
     }
 
     static crateEmpty() {
-        return new GunStatus(0, "", "", Lank.undefined, "", 0, Status.현보유, "");
+        return new GunStatus(0, "", "", Lank.없음, "", 0, Status.현보유, "");
     }
 }
 

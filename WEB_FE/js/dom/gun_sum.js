@@ -2,7 +2,8 @@
  * @file dom/gun_sum.js
  * @author Sinduy
  * @brief for #gun_list_table in gun_list.html
- * @requires defines.js | datatypes.js
+ * @requires defines.js
+ * @requires datatypes.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';

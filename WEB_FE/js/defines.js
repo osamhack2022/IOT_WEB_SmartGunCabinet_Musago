@@ -4,8 +4,17 @@
  * @brief define constants and tables
  */
 
-/** @type {number} */
+/** 
+ * @type {number} 
+ * @breif number of Gun cabinet slots
+ */
 var CABINET_SIZE = 10;
+
+/**
+ *  @type {Array<>} 
+ *  @breif array of Gun cabinet slots
+ */
+var gunStatusArray = [];
 
 const body = document.body;
 const gun_sum_table = document.getElementById("gun_sum_table");
