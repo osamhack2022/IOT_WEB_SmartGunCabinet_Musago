@@ -65,7 +65,8 @@ var edit_status = function (gunStatus) {
         if(gunStatus.status == i) button.classList.add('selected');
         button.innerHTML = status;
 
-        button.addEventListener('click', () => {
+        button.addEventListener('click', function () {
+            //gunStatus = gunStatusArray.find(data => data.num == gunStatus.num);
             gunStatus.status = i;
             gunStatus.note = note.value;
 
@@ -77,6 +78,8 @@ var edit_status = function (gunStatus) {
             save_localstorage("gunStatusArray", gunStatusArray);
 
             set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
+
+            this.removeEventListener('click', arguments.callee);
         });
     }
     popup.appendChild(note);
@@ -86,9 +89,7 @@ var edit_status = function (gunStatus) {
 
 function edit_lank(e){
     if(!editMode) return;
-    if(document.getElementById("edit_lank") != null) {
-        document.getElementById("edit_lank").remove();
-    }
+    document.getElementById("edit_lank")?.remove();
 
     // popup status selections
     let root = document.createElement('div');
@@ -102,8 +103,8 @@ function edit_lank(e){
     root.setAttribute('id','edit_lank');
     popup.setAttribute('class','popup');
     for(let i = 0; i < Lank_table.length; i++) {
-        let lank = Lank_table[i];
-        let button = document.createElement('button');
+        const lank = Lank_table[i];
+        const button = document.createElement('button');
         popup.appendChild(button);
         buttons.push(button);
 
@@ -174,13 +175,13 @@ function edit_gun_status() {
                     cell.setAttribute("contenteditable", "true");
                 });
                 eatch_paramlist_in_row(row, ["lank"], (cell) => {
+                    cell.removeEventListener('click', edit_lank);
                     cell.addEventListener('click', edit_lank);
                 });
             }
 
-
-            const div_edit_lank = document.getElementById("edit_lank");
-            if(div_edit_lank != undefined) div_edit_lank.remove();
+            document.getElementById("edit_lank")?.remove();
+            this.removeEventListener('click', arguments.callee);
         });
     });
 }
@@ -233,9 +234,7 @@ function remove_gun_status() {
 const bt_edit_mode = document.getElementById('bt_edit_mode');
 const bt_save = document.getElementById('bt_save');
 const bt_remove = document.getElementById('bt_remove');
-bt_edit_mode.addEventListener('click', (e) => {
-    // editMode = !editMode;
-    // edit_gun_status_list_row();
+bt_edit_mode.addEventListener('click', function (e) {
     editMode = true;
     edit_gun_status();
     bt_save.removeAttribute('hidden');
@@ -245,7 +244,7 @@ bt_edit_mode.addEventListener('click', (e) => {
     if(div_edit_status)
         div_edit_status.remove();
 });
-bt_save.addEventListener('click', (e) => {
+bt_save.addEventListener('click', function (e) {
     editMode = false;
     save_gun_status();
     save_localstorage("gunStatusArray", gunStatusArray);
@@ -255,7 +254,7 @@ bt_save.addEventListener('click', (e) => {
     set_gun_list_table_tbody(gunStatusArray);
     set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
 });
-bt_remove.addEventListener('click', (e) => {
+bt_remove.addEventListener('click', function (e) {
     editMode = false;
     remove_gun_status();
     save_localstorage("gunStatusArray", gunStatusArray);
