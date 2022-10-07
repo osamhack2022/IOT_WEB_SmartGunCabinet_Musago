@@ -248,11 +248,12 @@ bt_save.addEventListener('click', function (e) {
     editMode = false;
     save_gun_status();
     save_localstorage("gunStatusArray", gunStatusArray);
-    bt_save.setAttribute('hidden', 'true');
-    bt_remove.setAttribute('hidden', 'true');
-    bt_edit_mode.removeAttribute('hidden');
-    set_gun_list_table_tbody(gunStatusArray);
-    set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
+    // bt_save.setAttribute('hidden', 'true');
+    // bt_remove.setAttribute('hidden', 'true');
+    // bt_edit_mode.removeAttribute('hidden');
+    // set_gun_list_table_tbody(gunStatusArray);
+    // set_gun_sum_table_tbody(count_gun_status(gunStatusArray));
+    location.reload();  // 저장 후 열외 수정안되는 버그때문에 임시로 리로드
 });
 bt_remove.addEventListener('click', function (e) {
     editMode = false;
