@@ -2,7 +2,8 @@
  * @file dom/gun_sum.js
  * @author Sinduy
  * @brief for #gun_list_table in gun_list.html
- * @requires defines.js | datatypes.js
+ * @requires defines.js
+ * @requires datatypes.js
  */
 
 // import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
@@ -52,6 +53,7 @@ let add_row = (tbody, data) => {
             }
         }while(i != 0)
     }
+    return row;
 }
 
 /**
@@ -60,13 +62,15 @@ let add_row = (tbody, data) => {
 */
 function set_gun_sum_table_tbody(datalist) {
     const tbody = gun_sum_table.querySelector("tbody")
+    const tfoot = gun_sum_table.querySelector("tfoot")
     tbody.innerHTML = "";
+    tfoot.innerHTML = "";
     let sumdata = new GunSum("합계");
     datalist.forEach(data => {
         add_row(tbody, data);
         sumdata.addGunSum(data);
     });
-    add_row(tbody, sumdata);
+    add_row(tfoot, sumdata).querySelectorAll("td")[0].outerHTML = `<th>${sumdata.gun_model}</th>`;
 }
 
 /**

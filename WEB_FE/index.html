@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/debug.css"></link>
 <body style="user-select: none">
     <h1>
         근무자 총기 보관함
@@ -9,14 +10,21 @@
     <table id="gun_sum_table">
         <thead></thead>
         <tbody></tbody>
+        <tfoot></tfoot>
     </table>
     <table id="gun_list_table">
         <thead></thead>
         <tbody></tbody>
     </table>
+    <div id="edit_mode_buttons">
+        <button id="bt_edit_mode">edit mode</button>
+        <button id="bt_save" hidden="true">save</button>
+        <button id="bt_remove" hidden="true">remove</button>
+    </div>
     <script type="text/javascript" src="js/defines.js"></script>
     <script type="text/javascript" src="js/datatypes.js"></script>
     <script type="text/javascript" src="js/objconv.js"></script>
+    <script type="text/javascript" src="js/dataio.js"></script>
     <script type="text/javascript" src="js/dom/gun_list.js"></script>
     <script type="text/javascript" src="js/dom/gun_sum.js"></script>
     <script type="text/javascript" src="js/dom/edit_status.js"></script>
