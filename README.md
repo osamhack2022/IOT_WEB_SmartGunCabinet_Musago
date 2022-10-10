@@ -2,7 +2,7 @@
 
 ## Introduction
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/85000764/193397925-9a59fcc6-93ce-426d-a784-fc79fc14896e.pngg" alt="logo"/>
+  <img src="https://user-images.githubusercontent.com/85000764/193397925-9a59fcc6-93ce-426d-a784-fc79fc14896e.png" alt="logo"/>
 </p>
 
 **스마트 총기현황판**은 라즈베리파이, 아두이노 기반한 스마트 디스플레이입니다.
