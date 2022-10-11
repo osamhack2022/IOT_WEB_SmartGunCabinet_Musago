@@ -7,3 +7,7 @@ import os
 RESOURCE_PATH = os.environ.get('WEB_FE_HOME', '../WEB_FE')
 # datatable files
 DATAFILE_PATH = './data'
+
+# uart
+UART_PORT = '/dev/ttyUSB0'
+UART_BAUDRATE = "115200"
