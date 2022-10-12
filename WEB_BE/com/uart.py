@@ -5,36 +5,41 @@
 #  @author  Sinduy
 #  @brief This module for uart protocol communication
 
-import serial
-import time
 import signal
 import threading
+import serial
+from com.datastruct import *
+from config import *
 
-from config import UART_PORT, UART_BAUDRATE
-
-exitThread = False
-
-def handler(signum, frame):
-    exitThread = True
-
-def parsing_data(data):
-	# TODO : add data parsing
-	# TODO : add event handler
-	pass
-
-def readThread():
-    global line
-    global exitThread
-
-    while not exitThread:
-        for c in com.read():
-            parsing_data(c)
-
-if __name__ == "__main__":
-    signal.signal(signal.SIGINT, handler)
+try:
     com = serial.Serial(port = UART_PORT,
-        baudrate = UART_BAUDRATE,
-        bytesize = serial.EIGHTBITS,
-        parity = serial.PARITY_NONE,)
-    thread = threading.Thread(target=readThread)
-    thread.start()
+    baudrate = UART_BAUDRATE,
+    bytesize = UART_DATABITS,
+    parity = UART_PARITY,
+    timeout = UART_TIMEOUT,
+    stopbits = UART_STOPBITS)
+    print('uart: open port %s' % UART_PORT)
+except Exception as e:
+    print('uart: open port %s failed' % UART_PORT)
+    print(e)
+
+
+def requst_gunStatus():
+    data = DataStruct(Requst(Requst.GUNSTATUS, []))
+    try:
+        data = com.read()
+        l1_data = DataStruct(0, 0, b'')
+        l2_data = l1_data.unpack(data)
+        if(l2_data is not None):
+            if(type(l2_data) == GunStatus):
+                return l2_data
+            else:
+                print('requst_gunStatus: is not GunStatus')
+        else:
+            print('requst_gunStatus: is None')
+
+    except serial.SerialTimeoutException:
+        print('requst_gunStatus: timeout')
+    except Exception as e:
+        print('uart: open port %s failed' % UART_PORT)
+        print(e)
