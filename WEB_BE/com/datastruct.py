@@ -6,7 +6,6 @@
 #  @brief This module for en-decapsulation of data
 
 from struct import *
-from typing import overload
 
 class Requst:
     ID = 0xAA
@@ -28,21 +27,19 @@ class GunStatus:
         self.data = data
 
 class DataStruct:
-    @overload
-    def __init__(self, id : int, len : int, data : bytes):
+
+    def __init__(self, id : int = 0, len : int = 0, data : bytes = b''):
         self.id = id
         self.len = len
         self.data = data
-    @overload
-    def __init__(self, gunstatus : GunStatus):
-        self.id = gunstatus.ID
-        self.len = len(gunstatus.data)
-        self.data = bytes(gunstatus.data)
-    @overload
-    def __init__(self, requst : Requst):
-        self.id = requst.ID
-        self.len = 1+len(requst.data)
-        self.data = bytes([requst.cmd]+requst.data)
+    
+    @classmethod
+    def from_GunStatus(cls, gunstatus : GunStatus) -> 'DataStruct':
+        return cls(gunstatus.ID, len(gunstatus.data), bytes(gunstatus.data))
+
+    @classmethod
+    def from_Requst(cls, requst : Requst) -> 'DataStruct':
+        return cls(requst.ID, 1+len(requst.data), bytes([requst.cmd]+requst.data))
 
     def pack(self):
         return pack('B', self.id) + pack('B', self.len) + self.data
