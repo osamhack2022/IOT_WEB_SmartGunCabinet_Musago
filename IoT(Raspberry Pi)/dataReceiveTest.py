@@ -10,6 +10,6 @@ serial.flushInput()
 
 while True:
 	if(serial.in_waiting > 0):
-		sensData = serial.readline()
+		sensData = serial.readline()  #readline().decode('utf-8').rstrip()
 		print(sensData)
 	
