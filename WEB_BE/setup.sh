@@ -14,6 +14,7 @@ HOST = 127.0.0.1
 WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
 WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
 SERVICE_FILE=/etc/systemd/system/sgc_musago.service
+WAITRESS=/usr/local/bin/waitress-serve
 
 set -e
 set -v
@@ -32,7 +33,7 @@ fi
 
 # Install the python packages
 pip install -r $HERE/../WEB_BE/requirements.txt
-pip install install waitress
+pip install waitress
 
 # Create the directories
 mkdir -p $WEB_BE_HOME
@@ -61,7 +62,7 @@ echo "" >> $SERVICE_FILE
 echo "[Service]" >> $SERVICE_FILE
 echo "Type=idle" >> $SERVICE_FILE
 echo "WorkingDirectory=$WEB_BE_HOME" >> $SERVICE_FILE
-echo "ExecStart=/usr/bin/waitress-serve --host $HOST sgc_musago:app" >> $SERVICE_FILE
+echo "ExecStart=$WAITRESS --host $HOST sgc_musago:app" >> $SERVICE_FILE
 echo "StandardOutput=$WEB_BE_HOME/out.log" >> $SERVICE_FILE
 echo "StandardError=$WEB_BE_HOME/error.log" >> $SERVICE_FILE
 echo "EnvironmentFile=$WEB_BE_HOME/environment" >> $SERVICE_FILE
