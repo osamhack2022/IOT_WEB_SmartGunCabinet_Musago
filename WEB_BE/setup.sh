@@ -31,7 +31,7 @@ else
 fi
 
 # Install the python packages
-pip install -r $WEB_BE_HOME/requirements.txt
+pip install -r $HERE/../WEB_BE/requirements.txt
 pip install install waitress
 
 # Create the directories
