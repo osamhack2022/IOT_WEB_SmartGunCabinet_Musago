@@ -6,6 +6,9 @@ git 저장소를 복사합니다.
 복사한 저장소 디렉토리로 이동  
 ```$ cd IOT_WEB_SmartGunCabinet_Musago```  
 
+원하는 IP, PORT설정
+```$ nano ./WEB_BE/setup.sh```  
+
 setup.sh 스크립트 실행  
 ```$ sudo sh ./WEB_BE/setup.sh```  
 
@@ -19,6 +22,8 @@ http://127.0.0.1:5000 을 웹브라우져로 열면 서비스 이용이 가능�
 설정파일을 편집  
 ```$ sudo nano environment```  
 ```$ sudo nano config.py```  
+현제 IP와 PORT는 서비스파일을 수정 해야합니다.
+```$ sudo nano /etc/systemd/system/sgc_musago.service```  
 
 서비스 제시작  
 ```$ sudo systemctl restart sgc_musago```  
@@ -39,3 +44,7 @@ git pull 명령어로 최신 소스를 받아옵니다.
 
 upgrate.sh 스크립트 실행  
 ```$ sudo sh ./WEB_BE/upgrade.sh```  
+
+# 기타 명령어
+### error log 확인
+```$ journalctl -fu sgc_musago```  
