@@ -64,10 +64,10 @@ function set_gun_list_table_tbody(datalist) {
     const tbody = gun_list_table.querySelector("tbody")
     tbody.innerHTML = "";
     for(let i = 0; i < CABINET_SIZE; i++) {
-        let gunStatus = datalist.find(data => data.num == i+1);
-        if(gunStatus != undefined) {
+        const data = datalist.find(data => data.num == i+1);
+        if(data != undefined) {
             let row = tbody.insertRow();
-            set_row_GunStatus(row, gunStatus);
+            set_row_GunStatus(row, data);
         }else{
             let row = tbody.insertRow();
             row.innerHTML += `<td class="${GunStatus_Param_Array[0]} empty">${i+1}</td>`;

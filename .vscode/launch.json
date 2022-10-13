@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: WEB_BE Flask",
+            "name": "Python: WEB_BE Flask debug",
             "cwd": "${workspaceFolder}/WEB_BE",
             "type": "python",
             "request": "launch",
@@ -17,6 +17,24 @@
                 "FLASK_RUN_HOST": "127.0.0.1",
                 "FLASK_RUN_PORT": "5000",
                 "FLASK_DEBUG": "1",
+            },
+            "args": [
+                "run"
+            ],
+            "jinja": true
+        },
+        {
+            "name": "Python: WEB_BE Flask",
+            "cwd": "${workspaceFolder}/WEB_BE",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "console": "integratedTerminal",
+            "env": {
+                "FLASK_APP": "sgc_musago",
+                "FLASK_RUN_HOST": "127.0.0.1",
+                "FLASK_RUN_PORT": "5000",
+                "FLASK_DEBUG": "0",
             },
             "args": [
                 "run"

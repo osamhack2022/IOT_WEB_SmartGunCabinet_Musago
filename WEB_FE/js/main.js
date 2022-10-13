@@ -17,7 +17,7 @@
 // import { set_gun_sum_table_thead, set_gun_sum_table_tbody } from './dom/gun_sum.js';
 // import { load_localstorage } from './dataio.js';
 
-gunStatusArray = load_localstorage("gunStatusArray") ?? gunStatusArray;
+gunStatusArray = objectToGunStatusArray(load_localstorage("gunStatusArray") ?? gunStatusArray);
 CABINET_SIZE = load_localstorage("CABINET_SIZE") ?? CABINET_SIZE;
 
 set_gun_list_table_thead();

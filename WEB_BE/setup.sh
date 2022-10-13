@@ -10,9 +10,12 @@ fi
 HERE=$(dirname $(realpath $0))
 
 # Set the environment variables
+HOST=127.0.0.1
+PORT=5000
 WEB_BE_HOME=/usr/local/etc/sgc_musago/WEB_BE
 WEB_FE_HOME=/usr/local/etc/sgc_musago/WEB_FE
 SERVICE_FILE=/etc/systemd/system/sgc_musago.service
+WAITRESS=/usr/local/bin/waitress-serve
 
 set -e
 set -v
@@ -28,6 +31,10 @@ if which pip >/dev/null; then
 else
 	sudo -y apt install python3-pip
 fi
+
+# Install the python packages
+pip install -r $HERE/../WEB_BE/requirements.txt
+pip install waitress
 
 # Create the directories
 mkdir -p $WEB_BE_HOME
@@ -56,7 +63,7 @@ echo "" >> $SERVICE_FILE
 echo "[Service]" >> $SERVICE_FILE
 echo "Type=idle" >> $SERVICE_FILE
 echo "WorkingDirectory=$WEB_BE_HOME" >> $SERVICE_FILE
-echo "ExecStart=/usr/bin/python3 -um flask run" >> $SERVICE_FILE
+echo "ExecStart=$WAITRESS --host $HOST --port $PORT sgc_musago:app" >> $SERVICE_FILE
 echo "StandardOutput=$WEB_BE_HOME/out.log" >> $SERVICE_FILE
 echo "StandardError=$WEB_BE_HOME/error.log" >> $SERVICE_FILE
 echo "EnvironmentFile=$WEB_BE_HOME/environment" >> $SERVICE_FILE
@@ -65,9 +72,6 @@ echo "[Install]" >> $SERVICE_FILE
 echo "WantedBy= multi-user.target" >> $SERVICE_FILE
 echo "" >> $SERVICE_FILE
 chmod 644 $SERVICE_FILE
-
-# Install the python packages
-pip3 install -r $WEB_BE_HOME/requirements.txt
 
 # Reload the systemd daemon
 systemctl daemon-reload

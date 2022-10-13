@@ -47,13 +47,6 @@ class GunStatus {
         this.status = status;
         this.note = note;
     }
-    
-    /**
-     * @returns {string[]} array of GunStatus
-     */
-    toArray() {
-        return [this.num, this.name, this.division, this.lank, this.gun_model, this.gun_serial, this.status, this.note ]
-    }
 
     static crateEmpty() {
         return new GunStatus(0, "", "", Lank.없음, "", 0, Status.현보유, "");
@@ -82,13 +75,6 @@ class GunSum {
         this.gun_model = gun_model
         this.total = total
         this.status = status
-    }
-
-    /**
-     * @returns {string[]} array of GunSum
-    */
-    toArray() {
-        return [ this.name, this.total, this.status]
     }
 
     /**
@@ -131,12 +117,5 @@ class AdminInfo {
         this.position = position;
         this.lank = lank;
         this.code = code;
-    }
-
-    /**
-     * @returns {string[]} array of AdminInfo
-    */
-    toArray() {
-        return [ this.name, this.position, this.lank, this.code ]
     }
 }
