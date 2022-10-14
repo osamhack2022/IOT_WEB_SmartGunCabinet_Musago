@@ -15,6 +15,8 @@
     transform: translate(-50%, -50%);
     width: 400px;
     background: darkgray;
+    border: 2px solid gray;
+    padding: 4px;
     z-index: 2;
 }
 
@@ -24,7 +26,6 @@
     font-size: 16px;
     border: 1px solid darkgray;
     padding: 6px;
-    margin: auto;
     background: lightgray;
 }
 .popup button:hover{
@@ -43,15 +44,19 @@
     background: greenyellow;
 }
 
-#edit_lank .popup :first-child{
+#edit_lank .popup ._0{
     width: 100%;
 }
 #edit_lank .popup ._13{
     margin-left: 100px;
 }
 
+#edit_status .popup .button{
+    height: 64px;
+}
 #edit_status .popup input{
     width: 250px;
+    margin-top: 16px;
     text-align: center;
     background-color: white;
 }
@@ -63,6 +68,7 @@
 }
 #edit_status .popup button.close{
     width: 32px;
+    margin-top: 16px;
     float: right;
     background-color: lightcoral;
 }
