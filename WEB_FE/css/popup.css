@@ -52,7 +52,9 @@
 }
 
 #edit_status .popup .button{
-    height: 64px;
+    height: 120px;
+    width: 50%;
+    font-size: 300%;
 }
 #edit_status .popup input{
     width: 250px;
