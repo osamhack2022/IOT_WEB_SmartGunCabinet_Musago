@@ -12,17 +12,25 @@ from config import *
 class Port:
     def __init__(self):
         self.com = None
-        try:
-            self.com = serial.Serial(port = UART_PORT,
-                baudrate = UART_BAUDRATE,
-                bytesize = UART_DATABITS,
-                parity = UART_PARITY,
-                timeout = UART_TIMEOUT,
-                stopbits = UART_STOPBITS)
-            print('uart: open port %s' % UART_PORT)
-        except Exception as e:
-            print('uart: open port %s failed' % UART_PORT)
-            print(e)
+
+    def tryConnect(self):
+        if(self.com is not None):
+            if(self.com.isOpen()):
+                return True
+        else:
+            try:
+                self.com = serial.Serial(port = UART_PORT,
+                    baudrate = UART_BAUDRATE,
+                    bytesize = UART_DATABITS,
+                    parity = UART_PARITY,
+                    timeout = UART_TIMEOUT,
+                    stopbits = UART_STOPBITS)
+                print('uart: open port %s' % UART_PORT)
+            except Exception as e:
+                print('uart: open port %s failed' % UART_PORT)
+                print(e)
+                return False
+        return True
 
     def requst_gunStatus(self):
         data = DataStruct.from_Requst(Requst(Requst.GUNSTATUS, [])) # requst gun status
