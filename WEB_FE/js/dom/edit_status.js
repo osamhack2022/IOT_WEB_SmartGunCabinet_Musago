@@ -236,6 +236,7 @@ const bt_save = document.getElementById('bt_save');
 const bt_remove = document.getElementById('bt_remove');
 bt_edit_mode.addEventListener('click', function (e) {
     editMode = true;
+    gun_list_table.classList.add("edit");
     edit_gun_status();
     bt_save.removeAttribute('hidden');
     bt_remove.removeAttribute('hidden');
@@ -246,6 +247,7 @@ bt_edit_mode.addEventListener('click', function (e) {
 });
 bt_save.addEventListener('click', function (e) {
     editMode = false;
+    gun_list_table.classList.remove("edit");
     save_gun_status();
     save_localstorage("gunStatusArray", gunStatusArray);
     // bt_save.setAttribute('hidden', 'true');
@@ -257,6 +259,7 @@ bt_save.addEventListener('click', function (e) {
 });
 bt_remove.addEventListener('click', function (e) {
     editMode = false;
+    gun_list_table.classList.remove("edit");
     remove_gun_status();
     save_localstorage("gunStatusArray", gunStatusArray);
     bt_save.setAttribute('hidden', 'true');
