@@ -48,3 +48,18 @@ upgrate.sh 스크립트 실행
 # 기타 명령어
 ### error log 확인
 ```$ journalctl -fu sgc_musago```  
+
+# Windows 계발환경 설정법
+프로젝트를 clone 해서 해당 디랙토리로 이동합니다.  
+```.\WEB_BE\venv setup.bat```를 관리자 권한으로 실행합니다.  
+Ctrl+P  
+```ext install Extensions ms-python.python```  
+Ctrl+P  
+```> python: Select Interpreter```  
+인터프리터 경로를 ```\WEB_BE\venv\Script\python.exe```로 설정합니다.  
+
+## 실행법  
+Run and Debug(Ctrl+Shift+D)  
+Python: WEB_BE Flask또는 ... debug를 선택하고  
+Start Debugging(F5)을 누릅니다.  
+웹브라우저에서 http://127.0.0.1:5000 을 열면 서비스 이용이 가능합니다.
