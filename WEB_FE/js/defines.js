@@ -8,7 +8,7 @@
  * @type {number} 
  * @breif number of Gun cabinet slots
  */
-var CABINET_SIZE = 10;
+var CABINET_SIZE = 5;
 
 /**
  *  @type {Array<>} 
