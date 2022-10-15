@@ -1,0 +1,48 @@
+body{
+    margin: 0 auto;
+    font-size: 12px;
+    padding: 0 32px;
+}
+
+#title{
+    font-size: 23px;
+    text-align: center;
+    margin: 25px
+}
+
+.interval{
+    height: 16px;
+}
+#title+.interval{
+    height: 32px;
+}
+
+table{
+    margin: 0 auto;
+    border: 2px solid black;
+    border-collapse: collapse;
+    background: lightgray;
+    text-align: center;
+    width: 100%;
+}
+th, td{
+    height: 16pt;
+    width: 0px;
+    border: 1px solid black;
+}
+
+th{
+    background: #b0b0b0;
+}
+
+#edit_mode_buttons button{
+    width: auto;
+    font-size: 120%;
+    background: lightgray;
+}
+#edit_mode_buttons button:hover{
+    background: gray;
+}
+#edit_mode_buttons button:active{
+    background: white;
+}

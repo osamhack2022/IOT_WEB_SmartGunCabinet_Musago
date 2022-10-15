@@ -25,8 +25,8 @@ function set_gun_sum_table_thead() {
         do {
             (i < Status_table.length-1) ? i++ : i=0
             cell = row.insertCell();
-            cell.outerHTML = `<th>${Status_table[i]}</th>`;
-            cell.className = Status_table[i];
+            cell.className = "status _"+i;
+            cell.outerHTML = `<th class="${cell.className}">${Status_table[i]}</th>`;
         }while(i != 0)
     }
     
@@ -44,7 +44,7 @@ let add_row = (tbody, data) => {
             (i < Status_table.length-1) ? i++ : i=0
             cell = row.insertCell();
             const n = data.status[i];
-            cell.className = Status_table[i];
+            cell.className = "status _"+i;
             if(n != 0) {
                 cell.innerHTML = n;
             }else{
