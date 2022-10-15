@@ -2,20 +2,27 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/debug.css"></link>
+    <link rel="stylesheet" href="css/default.css"></link>
+    <link rel="stylesheet" href="css/gun_list_table.css"></link>
+    <link rel="stylesheet" href="css/gun_sum_table.css"></link>
+    <link rel="stylesheet" href="css/popup.css"></link>
+</head>
 <body style="user-select: none">
-    <h1>
+    <h1 id="title">
         근무자 총기 보관함
     </h1>
+    <div class="interval"></div>
     <table id="gun_sum_table">
         <thead></thead>
         <tbody></tbody>
         <tfoot></tfoot>
     </table>
+    <div class="interval"></div>
     <table id="gun_list_table">
         <thead></thead>
         <tbody></tbody>
     </table>
+    <div class="interval"></div>
     <div id="edit_mode_buttons">
         <button id="bt_edit_mode">edit mode</button>
         <button id="bt_save" hidden="true">save</button>

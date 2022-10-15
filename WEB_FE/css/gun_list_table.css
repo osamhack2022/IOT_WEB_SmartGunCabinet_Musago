@@ -1,0 +1,72 @@
+table#gun_list_table{
+    table-layout: fixed;
+}
+#gun_list_table .num{
+    width: 12px !important;
+}
+#gun_list_table .name{
+    width: 44px !important;
+}
+#gun_list_table .division{
+    width: 29px !important;
+}
+#gun_list_table .lank{
+    width: 15px !important;
+}
+#gun_list_table .gun_model{
+    width: 36px !important;
+}
+#gun_list_table .gun_serial{
+    width: 50px !important;
+}
+#gun_list_table .status{
+    width: 20px !important;
+}
+#gun_list_table .note{
+    width: 32px !important;
+}
+
+#gun_list_table .empty{
+    background: white;
+}
+#gun_list_table:not(.edit) tr:hover{
+    background: pink;
+}
+
+#gun_list_table.edit thead tr *{
+    background: pink!important;
+}
+#gun_list_table.edit{
+    border-color: darkred;
+}
+#gun_list_table.edit .empty{
+    background: lightgray;
+}
+#gun_list_table.edit .selected .edit{
+    background: lightgoldenrodyellow;
+}
+#gun_list_table.edit .selected .edit:hover{
+    background: lightgray;
+}
+#gun_list_table.edit .selected *{
+    background: gray;
+}
+#gun_list_table.edit .selected .lank,
+#gun_list_table.edit .selected .num{
+    background: goldenrod;
+}
+#gun_list_table.edit .selected .lank:hover{
+    background: gray;
+}
+#gun_list_table.edit .selected .num:hover{
+    background: gray;
+}
+#gun_list_table.edit .num:hover{
+    background: goldenrod;
+}
+#gun_list_table.edit .num:hover ~ *{
+    background: goldenrod;
+}
+#gun_list_table.edit .selected .num:hover ~ *{
+    background: wheat;
+}

@@ -11,6 +11,7 @@ import json
 
 @app.route('/')
 def index():
+    arduino.tryConnect()
     return render_template('index.html')
 
 @app.route('/gunstatus')

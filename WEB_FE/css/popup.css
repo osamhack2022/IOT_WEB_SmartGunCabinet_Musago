@@ -1,0 +1,82 @@
+.popup_background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: darkgray;
+    border: 2px solid gray;
+    padding: 4px;
+    z-index: 2;
+}
+
+.popup *{
+    width: 25%;
+    height: 100%;
+    font-size: 16px;
+    border: 1px solid darkgray;
+    padding: 6px;
+    background: lightgray;
+}
+.popup button:hover{
+    background: gray;
+}
+.popup button:active{
+    background: white;
+}
+.popup button.selected{
+    background: lightgreen;
+}
+.popup button.selected:hover{
+    background: green;
+}
+.popup button.selected:active{
+    background: greenyellow;
+}
+
+#edit_lank .popup ._0{
+    width: 100%;
+}
+#edit_lank .popup ._13{
+    margin-left: 100px;
+}
+
+#edit_status .popup .button{
+    height: 120px;
+    width: 50%;
+    font-size: 300%;
+}
+#edit_status .popup input{
+    width: 250px;
+    margin-top: 16px;
+    text-align: center;
+    background-color: white;
+}
+#edit_status .popup input:hover{
+    background-color: lightgray;
+}
+#edit_status .popup button.clear{
+    width: 60px;
+}
+#edit_status .popup button.close{
+    width: 32px;
+    margin-top: 16px;
+    float: right;
+    background-color: lightcoral;
+}
+#edit_status .popup button.close:hover{
+    background-color: red;
+}
+#edit_status .popup button.close:active{
+    background-color: pink;
+}
