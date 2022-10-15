@@ -55,6 +55,9 @@ var edit_status = function (gunStatus) {
     clear.addEventListener('click', () => {
         note.value = '';
     });
+    root.addEventListener('click', () => {
+        root.remove();
+    });
     for(let i = 0; i < Status_table.length; i++) {
         let status = Status_table[i];
         let button = document.createElement('button');
@@ -87,6 +90,10 @@ var edit_status = function (gunStatus) {
     popup.appendChild(close);
 }
 
+/** 
+ * @brief 계급 수정 모드로 전환
+ * @param {PointerEvent} e
+*/
 function edit_lank(e){
     if(!editMode) return;
     document.getElementById("edit_lank")?.remove();
@@ -102,6 +109,9 @@ function edit_lank(e){
     root.setAttribute('class','popup_background');
     root.setAttribute('id','edit_lank');
     popup.setAttribute('class','popup');
+    root.addEventListener('click', () => {
+        root.remove();
+    });
     for(let i = 0; i < Lank_table.length; i++) {
         const lank = Lank_table[i];
         const button = document.createElement('button');
