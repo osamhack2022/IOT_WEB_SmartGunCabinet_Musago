@@ -56,7 +56,7 @@ Ctrl+P
 ```ext install Extensions ms-python.python```  
 Ctrl+P  
 ```> python: Select Interpreter```  
-인터프리터 경로를 ```\WEB_BE\venv\Script\python.exe```로 설정합니다.  
+인터프리터 경로를 ```.\WEB_BE\venv\Script\python.exe```로 설정합니다.  
 
 ## 실행법  
 Run and Debug(Ctrl+Shift+D)  
