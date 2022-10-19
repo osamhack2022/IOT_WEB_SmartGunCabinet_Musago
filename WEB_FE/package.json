@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./js/main.js",
   "scripts": {
-    "doc": "jsdoc -r ./js -d ../doc/WEB_FE"
+    "doc": "jsdoc -r ./js -d ../docs/WEB_FE"
   },
   "keywords": [],
   "author": "",

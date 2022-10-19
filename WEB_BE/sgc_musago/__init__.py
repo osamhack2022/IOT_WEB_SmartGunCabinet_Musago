@@ -3,7 +3,7 @@
 #  @package flaskapp
 #  @file __init__.py
 #  @author  Sinduy
-#  @brief This module contains the Flask app.
+#  @description This module contains the Flask app.
 
 import os
 from flask import Flask

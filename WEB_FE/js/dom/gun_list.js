@@ -1,7 +1,7 @@
 /**
  * @file dom/gun_list.js
  * @author Sinduy
- * @brief for #gun_list_table in gun_list.html
+ * @description for #gun_list_table in gun_list.html
  * @requires defines.js
  * @requires datatypes.js
  * @requires dom/edit_status.js
@@ -12,7 +12,7 @@
 // import { edit_status } from './edit_status.js';
 
 /**
- * @brief set thead of gun_list_table
+ * @description set thead of gun_list_table
  */
 function set_gun_list_table_thead() {
     const thead = gun_list_table.querySelector("thead");
@@ -28,7 +28,7 @@ function set_gun_list_table_thead() {
 }
 
 /**
- * @brief GunStatus data to HTML
+ * @description GunStatus data to HTML
  * @param {HTMLTableRowElement} row Element to set
  * @param {GunStatus} data GunStatus data
  */
@@ -57,7 +57,7 @@ function set_row_GunStatus(row, data) {
 
 
 /**
- * @brief set tbody of gun_list_table
+ * @description set tbody of gun_list_table
  * @param {GunStatus[]} datalist GunStatus data list
 */
 function set_gun_list_table_tbody(datalist) {
@@ -79,7 +79,7 @@ function set_gun_list_table_tbody(datalist) {
 }
 
 /**
- * @brief update tbody of gun_list_table
+ * @description update tbody of gun_list_table
  * @param {GunStatus[]} datalist GunStatus data list
 */
 function update_gun_list_table(datalist) {

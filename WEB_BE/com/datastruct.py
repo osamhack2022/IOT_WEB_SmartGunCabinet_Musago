@@ -3,7 +3,7 @@
 #  @package flaskapp
 #  @file __init__.py
 #  @author  Sinduy
-#  @brief This module for en-decapsulation of data
+#  @description This module for en-decapsulation of data
 
 from struct import *
 

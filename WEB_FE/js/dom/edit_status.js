@@ -1,7 +1,7 @@
 /**
  * @file dom/edit_state.js
  * @author Sinduy
- * @brief for status editer
+ * @description for status editer
  * @requires defines.js
  * @requires datatypes.js
  * @requires gun_list.js
@@ -19,7 +19,7 @@ var editMode = false;
 var selected = [];
 
 /** 
- * @brief 열외 수정 모드로 전환
+ * @description 열외 수정 모드로 전환
  * @param {GunStatus} gunStatus GunStatus data
 */
 var edit_status = function (gunStatus) {
@@ -120,7 +120,7 @@ function edit_lank(e){
 }
 
 /**
- * @brief eatch_param_in_tbody
+ * @description eatch_param_in_tbody
  * @param {HTMLTableSectionElement} tbody
  * @param {string} param
  * @param {function(Element)} func
@@ -133,7 +133,7 @@ function eatch_param_in_tbody(tbody, param, func) {
 }
 
 /**
- * @brief eatch_paramlist_in_row
+ * @description eatch_paramlist_in_row
  * @param {HTMLTableRowElement} row
  * @param {string[]} paramlist
  * @param {function(Element)} func
@@ -146,7 +146,7 @@ function eatch_paramlist_in_row(row, paramlist, func) {
 }
 
 /**
- * @brief on edit mode!!!
+ * @description on edit mode!!!
 */
 function edit_gun_status() {
     selected = [];
@@ -187,7 +187,7 @@ function edit_gun_status() {
 }
 
 /**
- * @brief save gun_status at gunStatusArray
+ * @description save gun_status at gunStatusArray
 */
 function save_gun_status() {
     if(editMode) return;
@@ -220,7 +220,7 @@ function save_gun_status() {
 }
 
 /**
- * @brief remove gun_status row in gun_list_table tbody
+ * @description remove gun_status row in gun_list_table tbody
 */
 function remove_gun_status() {
     if(editMode) return;

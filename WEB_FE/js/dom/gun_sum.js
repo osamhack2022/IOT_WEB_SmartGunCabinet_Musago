@@ -1,7 +1,7 @@
 /**
  * @file dom/gun_sum.js
  * @author Sinduy
- * @brief for #gun_list_table in gun_list.html
+ * @description for #gun_list_table in gun_list.html
  * @requires defines.js
  * @requires datatypes.js
  */
@@ -10,7 +10,7 @@
 // import { gun_sum_table, Status, Status_table } from './defines.js';
 
 /**
- * @brief set thead of gun_list_table
+ * @description set thead of gun_list_table
 */
 function set_gun_sum_table_thead() {
     const thead = gun_sum_table.querySelector("thead");
@@ -57,7 +57,7 @@ let add_row = (tbody, data) => {
 }
 
 /**
- * @brief set tbody of gun_list_table
+ * @description set tbody of gun_list_table
  * @param {GunSum[]} datalist GunSum data list
 */
 function set_gun_sum_table_tbody(datalist) {
@@ -74,7 +74,7 @@ function set_gun_sum_table_tbody(datalist) {
 }
 
 /**
- * @brief count the number of guns in each status
+ * @description count the number of guns in each status
  * @param {GunStatus[]} datalist GunStatus data list
  * @returns {GunSum[]} GunSum data list
 */
