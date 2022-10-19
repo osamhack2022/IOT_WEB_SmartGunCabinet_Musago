@@ -1,0 +1,17 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "main": "./js/main.js",
+  "scripts": {
+    "doc": "jsdoc -r ./js -d ../doc/WEB_FE"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdoc": "^3.6.11",
+    "docdash": "^1.2.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
