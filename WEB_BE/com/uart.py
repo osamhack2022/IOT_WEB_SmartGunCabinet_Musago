@@ -3,7 +3,7 @@
 #  @package flaskapp
 #  @file __init__.py
 #  @author  Sinduy
-#  @brief This module for uart protocol communication
+#  @description This module for uart protocol communication
 
 import serial
 from com.datastruct import *

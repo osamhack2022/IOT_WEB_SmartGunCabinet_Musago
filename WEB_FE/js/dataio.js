@@ -1,7 +1,7 @@
 /**
  * @file dataio.js
  * @author Sinduy
- * @brief data io
+ * @description data io
 */
 
 /**

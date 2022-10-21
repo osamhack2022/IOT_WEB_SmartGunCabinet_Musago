@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: dom/gun_sum.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: dom/gun_sum.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file dom/gun_sum.js
+ * @author Sinduy
+ * @description for #gun_list_table in gun_list.html
+ * @requires defines.js
+ * @requires datatypes.js
+ */
+
+// import { GunStatus, GunStatus_ParamNames} from './datatypes.js';
+// import { gun_sum_table, Status, Status_table } from './defines.js';
+
+/**
+ * @description set thead of gun_list_table
+*/
+function set_gun_sum_table_thead() {
+    const thead = gun_sum_table.querySelector("thead");
+    thead.innerHTML = "";
+    let row = thead.insertRow();
+    row.innerHTML = `
+    &lt;th class="gun_model">${GunSum_ParamNames.gun_model}&lt;/th>
+    &lt;th class="total">${GunSum_ParamNames.total}&lt;/th>
+    `
+    {
+        let i = 0
+        do {
+            (i &lt; Status_table.length-1) ? i++ : i=0
+            cell = row.insertCell();
+            cell.className = "status _"+i;
+            cell.outerHTML = `&lt;th class="${cell.className}">${Status_table[i]}&lt;/th>`;
+        }while(i != 0)
+    }
+    
+}
+
+let add_row = (tbody, data) => {
+    let row = tbody.insertRow();
+    row.innerHTML = `
+    &lt;td class="gun_model">${data.gun_model}&lt;/td>
+    &lt;td class="total">${data.total}&lt;/td>
+    `
+    {
+        let i = 0
+        do {
+            (i &lt; Status_table.length-1) ? i++ : i=0
+            cell = row.insertCell();
+            const n = data.status[i];
+            cell.className = "status _"+i;
+            if(n != 0) {
+                cell.innerHTML = n;
+            }else{
+                cell.className += " none";
+                cell.innerHTML = "-";
+            }
+        }while(i != 0)
+    }
+    return row;
+}
+
+/**
+ * @description set tbody of gun_list_table
+ * @param {GunSum[]} datalist GunSum data list
+*/
+function set_gun_sum_table_tbody(datalist) {
+    const tbody = gun_sum_table.querySelector("tbody")
+    const tfoot = gun_sum_table.querySelector("tfoot")
+    tbody.innerHTML = "";
+    tfoot.innerHTML = "";
+    let sumdata = new GunSum("합계");
+    datalist.forEach(data => {
+        add_row(tbody, data);
+        sumdata.addGunSum(data);
+    });
+    add_row(tfoot, sumdata).querySelectorAll("td")[0].outerHTML = `&lt;th>${sumdata.gun_model}&lt;/th>`;
+}
+
+/**
+ * @description count the number of guns in each status
+ * @param {GunStatus[]} datalist GunStatus data list
+ * @returns {GunSum[]} GunSum data list
+*/
+function count_gun_status(datalist) {
+    /** @type {Array&lt;GunSum>} */
+    let gun_sum_list = [];
+    datalist.forEach(data => {
+        const gun_model = data.gun_model;
+        let gun_sum = gun_sum_list.find(data => data.gun_model == gun_model);
+        if(gun_sum == undefined) {
+            gun_sum = new GunSum(gun_model);
+            gun_sum_list.push(gun_sum);
+        }
+        gun_sum.addGunStatus(data.status);
+    });
+    return gun_sum_list;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AdminInfo.html">AdminInfo</a></li><li><a href="GunStatus.html">GunStatus</a></li><li><a href="GunSum.html">GunSum</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adminInfoToObj">adminInfoToObj</a></li><li><a href="global.html#CABINET_SIZE">CABINET_SIZE</a></li><li><a href="global.html#count_gun_status">count_gun_status</a></li><li><a href="global.html#eatch_param_in_tbody">eatch_param_in_tbody</a></li><li><a href="global.html#eatch_paramlist_in_row">eatch_paramlist_in_row</a></li><li><a href="global.html#edit_gun_status">edit_gun_status</a></li><li><a href="global.html#edit_status">edit_status</a></li><li><a href="global.html#GunStatus_Param_Array">GunStatus_Param_Array</a></li><li><a href="global.html#GunStatus_ParamNames">GunStatus_ParamNames</a></li><li><a href="global.html#gunStatusArray">gunStatusArray</a></li><li><a href="global.html#gunStatusToObj">gunStatusToObj</a></li><li><a href="global.html#GunSum_ParamNames">GunSum_ParamNames</a></li><li><a href="global.html#Lank">Lank</a></li><li><a href="global.html#load_localstorage">load_localstorage</a></li><li><a href="global.html#objectToAdminInfo">objectToAdminInfo</a></li><li><a href="global.html#objectToAdminInfoArray">objectToAdminInfoArray</a></li><li><a href="global.html#objectToGunStatus">objectToGunStatus</a></li><li><a href="global.html#objectToGunStatusArray">objectToGunStatusArray</a></li><li><a href="global.html#remove_gun_status">remove_gun_status</a></li><li><a href="global.html#save_gun_status">save_gun_status</a></li><li><a href="global.html#save_localstorage">save_localstorage</a></li><li><a href="global.html#set_gun_list_table_tbody">set_gun_list_table_tbody</a></li><li><a href="global.html#set_gun_list_table_thead">set_gun_list_table_thead</a></li><li><a href="global.html#set_gun_sum_table_tbody">set_gun_sum_table_tbody</a></li><li><a href="global.html#set_gun_sum_table_thead">set_gun_sum_table_thead</a></li><li><a href="global.html#set_row_GunStatus">set_row_GunStatus</a></li><li><a href="global.html#Status">Status</a></li><li><a href="global.html#update_gun_list_table">update_gun_list_table</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Thu Oct 20 2022 00:47:42 GMT+0900 (대한민국 표준시)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

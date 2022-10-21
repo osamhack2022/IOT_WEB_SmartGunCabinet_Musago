@@ -1,7 +1,7 @@
 /**
  * @file objconv.js
  * @author Sinduy
- * @brief program entry point
+ * @description program entry point
  * @requires defines.js
  * @requires datatypes.js
  */
