@@ -1,7 +1,7 @@
 /**
  * @file datatypes.js
  * @author Sinduy
- * @brief class for data types
+ * @description class for data types
  */
 
 // #    성명	소속	계급	총기종류	총기번호	열외	비고

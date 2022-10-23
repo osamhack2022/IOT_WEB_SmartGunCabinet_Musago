@@ -1,18 +1,18 @@
 /**
  * @file defines.js
  * @author Sinduy
- * @brief define constants and tables
+ * @description define constants and tables
  */
 
 /** 
  * @type {number} 
- * @breif number of Gun cabinet slots
+ * @description number of Gun cabinet slots
  */
 var CABINET_SIZE = 10;
 
 /**
  *  @type {Array<>} 
- *  @breif array of Gun cabinet slots
+ *  @description array of Gun cabinet slots
  */
 var gunStatusArray = [];
 
