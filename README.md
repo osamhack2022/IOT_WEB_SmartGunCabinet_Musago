@@ -30,7 +30,7 @@
 ## License
 라이선스의 구체적인 내용 및 서드 파티 소프트웨어에 대해서는 본 레퍼지토리의 LICENSE.md 파일 및 튜토리얼 GitBook의 <a href="https://musago.gitbook.io/untitled/license">LICENSE 페이지</a>를 참조하십시오.
 
-* IoT: GPL v3
+*MIT LICENSE
 
 ## Copyright
 Copyrightⓒ 2022 Musago, All rights reserved.
