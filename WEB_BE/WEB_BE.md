@@ -51,9 +51,20 @@ upgrate.sh 스크립트 실행
 
 # Windows 계발환경 설정법
 프로젝트를 clone 해서 해당 디랙토리로 이동합니다.  
-```.\WEB_BE\venv setup.bat```를 관리자 권한으로 실행합니다.  
+
+WEB_BE폴더에서 venv 생성 및 활성화  
+```cd WEB_BE```  
+```python -m venv venv```  
+```.\venv\Scripts\activate.bat```  
+
+requirements모듈 설치  
+```pip install -r requirements.txt```
+
+vscode python모듈 설치  
 Ctrl+P  
-```ext install Extensions ms-python.python```  
+```ext install Extensions ms-python.python``` 
+
+python경로 설정
 Ctrl+P  
 ```> python: Select Interpreter```  
 인터프리터 경로를 ```.\WEB_BE\venv\Script\python.exe```로 설정합니다.  
